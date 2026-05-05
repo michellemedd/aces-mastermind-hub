@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ACES Mastermind Hub — May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: 'Inter', system-ui, sans-serif; background: #f5f5f7; color: #1a1a1a; line-height: 1.5; min-height: 100vh; }
+button, input { font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+:root {
+  --blue: #2233a8;
+  --blue-dark: #1a2890;
+  --blue-light: #3347c4;
+  --white: #fff;
+  --off: #f5f5f7;
+  --border: #e8e8e8;
+  --text: #1a1a1a;
+  --text-mid: #444;
+  --text-muted: #777;
+  --accent: #f5a623;
+  --gold: #f5a623;
+  --teal: #0d9e8a;
+  --row-hover: #f8f9ff;
+}
+
+/* ═══ SITE NAV ═══ */
+.site-nav { background: var(--blue); padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 200; }
+.site-logo { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.site-logo-box { width: 32px; height: 32px; background: rgba(255,255,255,0.15); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+.site-logo-text { color: #fff; font-size: 14px; font-weight: 700; }
+.site-nav-links { display: flex; gap: 2px; }
+.snl { padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8); cursor: pointer; border: none; background: none; white-space: nowrap; transition: all 0.15s; }
+.snl:hover { background: rgba(255,255,255,0.12); color: #fff; }
+.snl.cta { background: var(--accent); color: #1a1a1a; font-weight: 600; }
+.snl.cta:hover { background: #f9b940; }
+
+/* ═══ INFO PAGE ═══ */
+#info-mode { display: block; }
+#app-mode  { display: none; }
+
+.info-hero { background: var(--blue); padding: 56px 24px 60px; text-align: center; position: relative; overflow: hidden; }
+.info-hero::after { content:''; position:absolute; bottom:-1px; left:0; right:0; height:48px; background:var(--off); clip-path:ellipse(60% 100% at 50% 100%); }
+.hero-badge { display:inline-block; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25); border-radius:20px; font-size:12px; font-weight:600; color:rgba(255,255,255,0.9); padding:4px 14px; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:18px; }
+.info-hero h1 { font-size:clamp(28px,6vw,46px); font-weight:700; color:#fff; line-height:1.15; margin-bottom:12px; }
+.hero-sub { font-size:16px; color:rgba(255,255,255,0.7); max-width:520px; margin:0 auto 26px; }
+.hero-pills { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:28px; }
+.hpill { display:flex; align-items:center; gap:6px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:20px; padding:6px 14px; font-size:13px; color:rgba(255,255,255,0.85); }
+.hpill svg { width:13px; height:13px; opacity:0.7; flex-shrink:0; }
+.hero-ctas { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+.btn-p { display:inline-block; padding:11px 26px; background:var(--accent); color:#1a1a1a; border-radius:8px; font-size:14px; font-weight:600; border:none; cursor:pointer; transition:all 0.15s; }
+.btn-p:hover { background:#f9b940; transform:translateY(-1px); }
+.btn-o { display:inline-block; padding:11px 26px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.25); color:#fff; border-radius:8px; font-size:14px; font-weight:500; cursor:pointer; transition:all 0.15s; }
+.btn-o:hover { background:rgba(255,255,255,0.18); }
+
+.info-wrap { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+.isec { padding: 48px 0; }
+.isec + .isec { border-top: 1px solid var(--border); }
+.isec-head { display:flex; align-items:center; gap:12px; background:var(--off); border-radius:10px; padding:14px 20px; margin-bottom:24px; }
+.isec-icon { width:36px; height:36px; border-radius:8px; background:var(--blue); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.isec-icon svg { width:18px; height:18px; }
+.isec-title { font-size:20px; font-weight:700; color:var(--text); }
+.about-body { font-size:15px; color:var(--text-mid); line-height:1.75; margin-bottom:20px; }
+.about-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; }
+.about-card { border:1px solid var(--border); border-radius:10px; padding:18px; background:#fff; }
+.about-card-icon { font-size:20px; margin-bottom:8px; }
+.about-card h4 { font-size:14px; font-weight:600; margin-bottom:5px; }
+.about-card p { font-size:13px; color:var(--text-muted); line-height:1.6; }
+.log-table { width:100%; border-collapse:collapse; border:1px solid var(--border); border-radius:10px; overflow:hidden; }
+.log-table th { background:var(--off); font-size:12px; font-weight:600; color:var(--text-muted); padding:10px 16px; text-align:left; border-bottom:1px solid var(--border); }
+.log-table td { font-size:14px; padding:12px 16px; border-bottom:1px solid var(--border); vertical-align:top; }
+.log-table tr:last-child td { border-bottom:none; }
+.log-table td:first-child { color:var(--text-muted); white-space:nowrap; width:180px; }
+.log-table td:last-child { font-weight:500; }
+.log-table a { color:var(--blue); }
+.log-note { margin-top:14px; font-size:13px; color:var(--text-muted); font-style:italic; }
+.reg-box { background:var(--blue); border-radius:14px; padding:40px; text-align:center; }
+.reg-box h3 { font-size:22px; font-weight:700; color:#fff; margin-bottom:8px; }
+.reg-box p { font-size:15px; color:rgba(255,255,255,0.65); margin-bottom:24px; max-width:460px; margin-left:auto; margin-right:auto; }
+.reg-who { margin:20px auto 0; max-width:460px; text-align:left; }
+.reg-who h4 { font-size:12px; font-weight:600; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px; }
+.reg-who p { font-size:14px; color:rgba(255,255,255,0.7); line-height:1.65; }
+.sched-2col { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+@media(max-width:600px){.sched-2col{grid-template-columns:1fr;}}
+.sched-day-h { font-size:15px; font-weight:700; color:var(--blue); margin-bottom:10px; padding-bottom:7px; border-bottom:2px solid var(--blue); }
+.sched-t { width:100%; border-collapse:collapse; border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+.sched-t th { background:var(--off); font-size:12px; font-weight:600; color:var(--text-muted); padding:8px 12px; text-align:left; border-bottom:1px solid var(--border); }
+.sched-t td { font-size:13px; padding:9px 12px; border-bottom:1px solid var(--border); }
+.sched-t tr:last-child td { border-bottom:none; }
+.sched-t td:first-child { font-weight:600; white-space:nowrap; width:70px; }
+.sched-mm { color:var(--blue); font-weight:500; }
+.sched-brk { color:var(--text-muted); font-style:italic; }
+.info-footer { background:var(--blue); color:rgba(255,255,255,0.5); text-align:center; padding:24px; font-size:13px; }
+.info-footer a { color:rgba(255,255,255,0.75); }
+
+/* ═══ APP MODE ═══ */
+#app-mode { background: var(--off); min-height: 100vh; }
+.app-wrap { max-width: 1020px; margin: 0 auto; min-height: 100vh; background: #fff; box-shadow: 0 0 0 1px var(--border); }
+.app-header { background: var(--blue); position: sticky; top: 0; z-index: 100; }
+.app-header-top { display: flex; align-items: center; padding: 0 20px; height: 52px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.app-back { background: none; border: none; color: rgba(255,255,255,0.75); font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 6px 0; margin-right: 14px; }
+.app-back:hover { color: #fff; }
+.app-back svg { width: 14px; height: 14px; }
+.app-logo2 { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.app-logo2-box { width: 30px; height: 30px; background: rgba(255,255,255,0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+.app-logo2-text { color: #fff; font-size: 13px; font-weight: 700; }
+.app-tabs { display: flex; overflow-x: auto; scrollbar-width: none; border-top: 1px solid rgba(255,255,255,0.1); }
+.app-tabs::-webkit-scrollbar { display: none; }
+.atab { flex-shrink: 0; display: flex; align-items: center; gap: 6px; padding: 0 16px; height: 48px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.65); cursor: pointer; border: none; background: none; border-bottom: 3px solid transparent; transition: all 0.15s; white-space: nowrap; }
+.atab:hover { color: rgba(255,255,255,0.9); }
+.atab.active { color: #fff; border-bottom-color: #fff; font-weight: 600; }
+.atab svg { width: 15px; height: 15px; opacity: 0.75; }
+.atab.active svg { opacity: 1; }
+.app-view { display: none; }
+.app-view.active { display: block; }
+.view-title { background: var(--blue); padding: 16px 20px 20px; }
+.view-title h2 { font-size: 22px; font-weight: 700; color: #fff; }
+.vsearch { margin-top: 10px; position: relative; }
+.vsearch svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; opacity: 0.5; }
+.vsearch input { width: 100%; padding: 9px 14px 9px 34px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; font-size: 14px; color: #fff; outline: none; }
+.vsearch input::placeholder { color: rgba(255,255,255,0.5); }
+.vsearch input:focus { background: rgba(255,255,255,0.22); }
+
+/* list rows */
+.lrow { display: flex; align-items: center; padding: 14px 20px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.1s; gap: 12px; }
+.lrow:hover { background: var(--row-hover); }
+.lrow-body { flex: 1; min-width: 0; }
+.lrow-lbl { font-size: 11px; font-weight: 600; color: var(--blue); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1px; }
+.lrow-title { font-size: 15px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lrow-sub { font-size: 13px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lrow-arr { color: #ccc; flex-shrink: 0; }
+.lrow-arr svg { width: 16px; height: 16px; }
+.lrow-nc { cursor: default; }
+.lrow-nc:hover { background: transparent; }
+
+/* detail */
+.det { display: none; }
+.det.active { display: block; }
+.det-head { background: var(--blue); padding: 18px 20px 22px; color: #fff; }
+.det-back { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,0.7); cursor: pointer; border: none; background: none; margin-bottom: 12px; padding: 0; }
+.det-back:hover { color: #fff; }
+.det-back svg { width: 14px; height: 14px; }
+.det-name { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+.det-sub { font-size: 14px; color: rgba(255,255,255,0.65); }
+.det-body { padding: 20px; }
+
+/* standard session card (used in schedule detail, person detail) */
+.sc-card { border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin-bottom: 14px; background: #fff; }
+.sc-title { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+.sc-dt { font-size: 14px; color: var(--text-muted); margin-bottom: 2px; }
+.sc-dt strong { color: var(--text); font-weight: 500; }
+.sc-topic-lbl { font-size: 12px; color: var(--text-muted); margin: 10px 0 2px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+.sc-topic-val { font-size: 14px; color: var(--text); margin-bottom: 14px; }
+.zbtn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 20px; background: var(--blue); color: #fff; border-radius: 8px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; transition: background 0.15s; text-decoration: none; }
+.zbtn:hover { background: var(--blue-dark); }
+.zbtn svg { width: 14px; height: 14px; }
+
+/* ═══ MY SESSIONS — unique gated design ═══ */
+.ms-gate { padding: 0; }
+.ms-gate-inner {
+  min-height: 500px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 40px 24px;
+  background: linear-gradient(160deg, #1a2890 0%, #2233a8 40%, #1a6b8a 100%);
+}
+.ms-gate-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px; padding: 36px 32px; width: 100%; max-width: 420px; text-align: center;
+  backdrop-filter: blur(8px);
+}
+.ms-gate-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(245,166,35,0.2); border: 1px solid rgba(245,166,35,0.35); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
+.ms-gate-icon svg { width: 26px; height: 26px; color: var(--accent); }
+.ms-gate-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.ms-gate-sub { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 24px; line-height: 1.65; }
+.ms-input { width: 100%; padding: 11px 14px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; font-size: 14px; color: #fff; margin-bottom: 10px; outline: none; transition: border-color 0.15s; }
+.ms-input:focus { border-color: var(--accent); background: rgba(255,255,255,0.15); }
+.ms-input::placeholder { color: rgba(255,255,255,0.35); }
+.ms-btn { width: 100%; padding: 11px; background: var(--accent); color: #1a1a1a; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.15s; }
+.ms-btn:hover { background: #f9b940; transform: translateY(-1px); }
+.ms-error { font-size: 13px; color: #ff7b7b; margin-top: 8px; display: none; }
+
+/* My Sessions — logged-in view */
+.ms-logged {
+  display: none;
+  background: linear-gradient(160deg, #1a2890 0%, #2233a8 40%, #1a6b8a 100%);
+  padding: 24px 20px 40px;
+  min-height: 500px;
+}
+.ms-profile { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.ms-avatar { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #fff; flex-shrink: 0; border: 2px solid rgba(255,255,255,0.3); }
+.ms-profile-name { font-size: 18px; font-weight: 700; color: #fff; }
+.ms-profile-email { font-size: 13px; color: rgba(255,255,255,0.5); }
+.ms-signout { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 6px; cursor: pointer; flex-shrink: 0; }
+.ms-signout:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+.ms-section-label { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+
+/* Day timeline cards */
+.ms-day-group { margin-bottom: 28px; }
+.ms-day-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 5px 14px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 14px; letter-spacing: 0.04em; }
+.ms-session-card {
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 18px; margin-bottom: 10px;
+  border-left: 3px solid var(--accent);
+}
+.ms-session-time { font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 5px; }
+.ms-session-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+.ms-session-room { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 12px; }
+.ms-session-room span { color: rgba(255,255,255,0.85); font-weight: 500; }
+.ms-zoom-btn { display: inline-flex; align-items: center; gap: 7px; padding: 8px 18px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.15s; cursor: pointer; }
+.ms-zoom-btn:hover { background: rgba(255,255,255,0.25); }
+.ms-zoom-btn svg { width: 14px; height: 14px; }
+.ms-zoom-pending { font-size: 13px; color: rgba(255,255,255,0.4); font-style: italic; }
+
+/* ═══ ROOMS (coaches) ═══ */
+.rooms-coach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 0; }
+.rooms-coach-card { border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); padding: 20px; display: flex; gap: 14px; align-items: flex-start; cursor: pointer; transition: background 0.1s; }
+.rooms-coach-card:hover { background: var(--row-hover); }
+.rooms-coach-photo { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.rooms-coach-av { width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #fff; }
+.rooms-coach-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.rooms-coach-session { font-size: 13px; color: var(--text-muted); }
+.rooms-coach-arr { margin-left: auto; color: #ccc; flex-shrink: 0; }
+.rooms-coach-arr svg { width: 16px; height: 16px; }
+
+/* ═══ FACILITATORS — rich cards ═══ */
+.fac-grid-new { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 16px; padding: 20px; }
+.fac-card-new { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: #fff; transition: box-shadow 0.15s; }
+.fac-card-new:hover { box-shadow: 0 6px 24px rgba(34,51,168,0.1); }
+.fac-card-photo-wrap { background: var(--off); height: 160px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.fac-card-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.fac-card-photo-av { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; color: #fff; }
+.fac-card-body { padding: 16px; }
+.fac-card-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.fac-card-role { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+.fac-card-links { display: flex; flex-direction: column; gap: 8px; }
+.fac-link { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--blue); text-decoration: none; padding: 7px 10px; border-radius: 7px; border: 1px solid rgba(34,51,168,0.15); background: rgba(34,51,168,0.04); transition: all 0.15s; }
+.fac-link:hover { background: rgba(34,51,168,0.1); border-color: rgba(34,51,168,0.3); }
+.fac-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+.fac-link.zoom { color: var(--teal); border-color: rgba(13,158,138,0.2); background: rgba(13,158,138,0.05); }
+.fac-link.zoom:hover { background: rgba(13,158,138,0.12); }
+
+/* room detail */
+.rd-head { background: var(--blue); padding: 18px 20px 22px; }
+.rd-back { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,0.7); cursor: pointer; border: none; background: none; margin-bottom: 14px; padding: 0; }
+.rd-back:hover { color: #fff; }
+.rd-back svg { width: 14px; height: 14px; }
+.rd-profile { display: flex; align-items: center; gap: 14px; }
+.rd-photo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.3); flex-shrink: 0; }
+.rd-av { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; color: #fff; background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.25); flex-shrink: 0; }
+.rd-name { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+.rd-role { font-size: 14px; color: rgba(255,255,255,0.65); }
+
+/* misc */
+.empty { text-align: center; padding: 48px 24px; color: var(--text-muted); font-size: 14px; }
+.hidden { display: none !important; }
+@media(max-width:560px){
+  .site-nav-links .snl:not(.cta){ display: none; }
+  .sched-2col{ grid-template-columns:1fr; }
+  .fac-grid-new { grid-template-columns: 1fr 1fr; }
+  .ms-gate-card { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ INFO PAGE ═══════════ -->
+<div id="info-mode">
+  <nav class="site-nav">
+    <div class="site-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <div class="site-logo-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <text x="1" y="18" font-family="serif" font-size="17" font-weight="800" fill="white">A</text>
+          <circle cx="19" cy="5" r="2.5" fill="#f5a623"/>
+          <circle cx="22" cy="12" r="1.8" fill="#5ecfb0"/>
+          <circle cx="19" cy="19" r="2" fill="#7cba6b"/>
+        </svg>
+      </div>
+      <span class="site-logo-text">ACES Mastermind Hub</span>
+    </div>
+    <div class="site-nav-links">
+      <button class="snl" onclick="iscroll('#about')">About</button>
+      <button class="snl" onclick="iscroll('#logistics')">Logistics</button>
+      <button class="snl" onclick="iscroll('#schedule')">Schedule</button>
+      <button class="snl" onclick="iscroll('#register')">Register</button>
+      <button class="snl cta" onclick="openApp()">My Sessions ›</button>
+    </div>
+  </nav>
+
+  <div class="info-hero">
+    <div class="hero-badge">May 7–8, 2026 &nbsp;·&nbsp; Virtual Event</div>
+    <h1>ACES Mastermind Hub</h1>
+    <p class="hero-sub">Everything you need for the ACES Virtual Mastermind — in one place.</p>
+    <div class="hero-pills">
+      <div class="hpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>May 7–8, 2026</div>
+      <div class="hpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Starts 10:00am Eastern</div>
+      <div class="hpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="15" height="10" rx="2"/><path d="M17 9l5-2v10l-5-2V9z"/></svg>Zoom · Virtual</div>
+      <div class="hpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Members Only · Free</div>
+    </div>
+    <div class="hero-ctas">
+      <button class="btn-p" onclick="iscroll('#register')">Register — It's Free</button>
+      <button class="btn-o" onclick="openApp()">View My Sessions</button>
+    </div>
+  </div>
+
+  <div class="info-wrap">
+    <div id="about" class="isec">
+      <div class="isec-head">
+        <div class="isec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01" stroke-linecap="round"/></svg></div>
+        <span class="isec-title">What is the Mastermind?</span>
+      </div>
+      <p class="about-body">The ACES Mastermind is an exclusive two-day virtual experience designed for ACES coaching entrepreneurs. It's a structured, high-impact peer experience where you'll tap into the collective intelligence of a small group of fellow entrepreneurs, get dedicated hot-seat time on your most pressing challenge, and walk away with a clear path forward — plus an accountability network that keeps you in motion.</p>
+      <p class="about-body">This event is built on one core belief: entrepreneurs grow faster together than alone. Every session is facilitated by an expert ACES coach who ensures every participant leaves with something real and actionable.</p>
+      <div class="about-grid">
+        <div class="about-card"><div class="about-card-icon">🎯</div><h4>Hot-seat masterminding</h4><p>Your challenge gets dedicated group focus — structured facilitation, not just open conversation.</p></div>
+        <div class="about-card"><div class="about-card-icon">🤝</div><h4>Peer intelligence</h4><p>Small groups of ACES entrepreneurs who understand your world and are invested in your success.</p></div>
+        <div class="about-card"><div class="about-card-icon">🧠</div><h4>Expert facilitation</h4><p>Each group is led by a skilled ACES facilitator ensuring maximum value for every participant.</p></div>
+        <div class="about-card"><div class="about-card-icon">🎁</div><h4>Free for members</h4><p>Exclusively for ACES program members. No extra cost — just register and show up ready.</p></div>
+      </div>
+    </div>
+
+    <div id="logistics" class="isec">
+      <div class="isec-head">
+        <div class="isec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.17.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.64-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg></div>
+        <span class="isec-title">Full Logistics</span>
+      </div>
+      <table class="log-table">
+        <thead><tr><th>Detail</th><th>Info</th></tr></thead>
+        <tbody>
+          <tr><td>📅 Date(s)</td><td>May 7 &amp; 8, 2026</td></tr>
+          <tr><td>⏰ Duration</td><td>2 days &nbsp;·&nbsp; Day 1: 10:00am–6:15pm ET &nbsp;·&nbsp; Day 2: 10:00am–4:30pm ET</td></tr>
+          <tr><td>📍 Location / Format</td><td>Zoom · Virtual</td></tr>
+          <tr><td>🔗 Main Zoom Room</td><td><a href="YOUR_MAIN_ZOOM_LINK" target="_blank">ACES Main Session Zoom Room ↗</a></td></tr>
+          <tr><td>👥 Group Size</td><td>Small mastermind groups — intimate by design</td></tr>
+          <tr><td>✅ What's Included</td><td>All sessions, facilitation, recordings</td></tr>
+          <tr><td>📞 Questions?</td><td><a href="mailto:aces@learn.mirasee.com">aces@learn.mirasee.com</a></td></tr>
+        </tbody>
+      </table>
+      <p class="log-note">Your personal breakout room Zoom links are in your confirmation email — or use the "My Sessions" portal to look them up instantly.</p>
+    </div>
+
+    <div id="register" class="isec">
+      <div class="isec-head">
+        <div class="isec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="isec-title">Registration Link</span>
+      </div>
+      <div class="reg-box">
+        <h3>Register for the May 2026 Mastermind</h3>
+        <p>Exclusively for ACES coaching program members. Attendance is free — spots are limited. Register now to secure your place and receive your Zoom links.</p>
+        <a class="btn-p" href="YOUR_REGISTRATION_LINK_HERE" target="_blank" style="font-size:15px;padding:13px 32px;">👉 Register for the Mastermind</a>
+        <div class="reg-who">
+          <h4>Who this is for</h4>
+          <p>Active ACES coaching program members who are ready to bring their #1 business challenge and invest two focused days growing alongside peers.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="schedule" class="isec">
+      <div class="isec-head">
+        <div class="isec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <span class="isec-title">Schedule One-Pager</span>
+      </div>
+      <div class="sched-2col">
+        <div>
+          <div class="sched-day-h">Day 1 — Thursday, May 7</div>
+          <table class="sched-t">
+            <thead><tr><th>Time</th><th>Session</th></tr></thead>
+            <tbody>
+              <tr><td>10:00am</td><td>Opening Session</td></tr>
+              <tr><td>11:00am</td><td class="sched-brk">Break (15 min)</td></tr>
+              <tr><td>11:15am</td><td class="sched-mm">Masterminding Session #1</td></tr>
+              <tr><td>1:15pm</td><td class="sched-brk">Break (15 min)</td></tr>
+              <tr><td>1:30pm</td><td>Lunch / Dinner with Peers</td></tr>
+              <tr><td>2:00pm</td><td class="sched-brk">Break (15 min)</td></tr>
+              <tr><td>2:15pm</td><td class="sched-mm">Masterminding Session #2</td></tr>
+              <tr><td>4:15pm</td><td class="sched-brk">Break (15 min)</td></tr>
+              <tr><td>4:30pm</td><td>Day 1 Debrief &amp; Wrap-Up</td></tr>
+              <tr><td>5:00pm</td><td class="sched-brk">Break (30 min)</td></tr>
+              <tr><td>5:30pm</td><td>Dinner / Supper with Peers</td></tr>
+              <tr><td>6:15pm</td><td>Close</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="sched-day-h">Day 2 — Friday, May 8</div>
+          <table class="sched-t">
+            <thead><tr><th>Time</th><th>Session</th></tr></thead>
+            <tbody>
+              <tr><td>10:00am</td><td>Guest Speaker Session</td></tr>
+              <tr><td>11:00am</td><td class="sched-brk">Break (15 min)</td></tr>
+              <tr><td>11:15am</td><td class="sched-mm">Masterminding Session #3</td></tr>
+              <tr><td>1:15pm</td><td class="sched-brk">Break (15 min)</td></tr>
+              <tr><td>1:30pm</td><td>Lunch / Dinner with Peers</td></tr>
+              <tr><td>2:15pm</td><td class="sched-brk">Break (15 min)</td></tr>
+              <tr><td>2:30pm</td><td class="sched-mm">Masterminding Q&amp;A with Danny</td></tr>
+              <tr><td>3:45pm</td><td class="sched-brk">Break (15 min)</td></tr>
+              <tr><td>4:00pm</td><td>Final Debrief &amp; Wrap-Up</td></tr>
+              <tr><td>4:30pm</td><td>Close</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div style="margin-top:20px;">
+        <button class="btn-p" onclick="openApp()">Open the Full MM App &amp; My Sessions ›</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-footer">
+    ACES Business Acceleration &nbsp;·&nbsp; May 2026 Virtual Mastermind &nbsp;·&nbsp;
+    <a href="mailto:aces@learn.mirasee.com">aces@learn.mirasee.com</a>
+  </div>
+</div>
+
+<!-- ═══════════ APP MODE ═══════════ -->
+<div id="app-mode">
+  <div class="app-wrap">
+    <div class="app-header">
+      <div class="app-header-top">
+        <button class="app-back" onclick="closeApp()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          Hub
+        </button>
+        <div class="app-logo2" onclick="resetApp()">
+          <div class="app-logo2-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <text x="1" y="18" font-family="serif" font-size="17" font-weight="800" fill="white">A</text>
+              <circle cx="19" cy="5" r="2.5" fill="#f5a623"/>
+              <circle cx="22" cy="12" r="1.8" fill="#5ecfb0"/>
+              <circle cx="19" cy="19" r="2" fill="#7cba6b"/>
+            </svg>
+          </div>
+          <span class="app-logo2-text">ACES Mastermind</span>
+        </div>
+      </div>
+      <div class="app-tabs">
+        <button class="atab active" id="tab-sched" onclick="showTab('sched')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Schedule
+        </button>
+        <button class="atab" id="tab-person" onclick="showTab('person')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          MMs by Person
+        </button>
+        <button class="atab" id="tab-room" onclick="showTab('room')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="15" height="10" rx="2"/><path d="M17 9l5-2v10l-5-2V9z"/></svg>
+          MMs by Rooms
+        </button>
+        <button class="atab" id="tab-fac" onclick="showTab('fac')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M3 21v-1a9 9 0 0118 0v1"/></svg>
+          Facilitators
+        </button>
+        <button class="atab" id="tab-my" onclick="showTab('my')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4" stroke-linecap="round"/></svg>
+          My Sessions
+        </button>
+      </div>
+    </div>
+
+    <!-- SCHEDULE -->
+    <div id="view-sched" class="app-view active">
+      <div class="view-title"><h2>Schedule (Eastern Time)</h2>
+        <div class="vsearch"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg><input type="text" placeholder="Search" oninput="fSched(this.value)"></div>
+      </div>
+      <div id="sched-list"></div>
+      <div id="sched-det" class="det">
+        <div class="det-head">
+          <button class="det-back" onclick="hdDet('sched')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>Schedule</button>
+          <div class="det-name" id="sd-title"></div>
+          <div class="det-sub" id="sd-meta"></div>
+        </div>
+        <div class="det-body" id="sd-body"></div>
+      </div>
+    </div>
+
+    <!-- MMs BY PERSON -->
+    <div id="view-person" class="app-view">
+      <div class="view-title"><h2>MMs by Person</h2>
+        <div class="vsearch"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg><input type="text" placeholder="Search" oninput="fPerson(this.value)"></div>
+      </div>
+      <div id="person-list"></div>
+      <div id="person-det" class="det">
+        <div class="det-head">
+          <button class="det-back" onclick="hdDet('person')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>MMs by Person</button>
+          <div class="det-name" id="pd-name"></div>
+          <div class="det-sub">Personalized Masterminding Schedule</div>
+        </div>
+        <div class="det-body" id="pd-body"></div>
+      </div>
+    </div>
+
+    <!-- MMs BY ROOMS (coaches) -->
+    <div id="view-room" class="app-view">
+      <div class="view-title"><h2>MMs by Rooms</h2>
+        <div class="vsearch"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg><input type="text" placeholder="Search" oninput="fRoom(this.value)"></div>
+      </div>
+      <div id="room-list" class="rooms-coach-grid"></div>
+      <div id="room-det" class="det">
+        <div class="rd-head">
+          <button class="rd-back" onclick="hdDet('room')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>MMs by Rooms</button>
+          <div class="rd-profile">
+            <div id="rd-photo-slot"></div>
+            <div><div class="rd-name" id="rd-name"></div><div class="rd-role" id="rd-role"></div></div>
+          </div>
+        </div>
+        <div class="det-body" id="rd-body"></div>
+      </div>
+    </div>
+
+    <!-- FACILITATORS -->
+    <div id="view-fac" class="app-view">
+      <div class="view-title"><h2>Facilitators</h2></div>
+      <div class="fac-grid-new" id="fac-grid"></div>
+    </div>
+
+    <!-- MY SESSIONS (email-gated) -->
+    <div id="view-my" class="app-view">
+      <!-- Gate (shown by default) -->
+      <div class="ms-gate" id="ms-gate">
+        <div class="ms-gate-inner">
+          <div class="ms-gate-card">
+            <div class="ms-gate-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                <path d="M7 11V7a5 5 0 0110 0v4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="ms-gate-title">Your Personal Schedule</div>
+            <div class="ms-gate-sub">Enter the email address you registered with to access your Zoom links and personalized session schedule.</div>
+            <input type="email" class="ms-input" id="ms-email-input" placeholder="your@email.com" onkeydown="if(event.key==='Enter')msLookup()">
+            <button class="ms-btn" onclick="msLookup()">View My Sessions</button>
+            <div class="ms-error" id="ms-error">No registration found for that email. Please check and try again.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Logged-in view (hidden by default) -->
+      <div class="ms-logged" id="ms-logged">
+        <div class="ms-profile">
+          <div class="ms-avatar" id="ms-avatar"></div>
+          <div>
+            <div class="ms-profile-name" id="ms-pname"></div>
+            <div class="ms-profile-email" id="ms-pemail"></div>
+          </div>
+          <button class="ms-signout" onclick="msSignout()">Sign out</button>
+        </div>
+        <div id="ms-session-content"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════
+//  DATA — Update all YOUR_* placeholders before going live
+// ══════════════════════════════════════════════════════════
+
+const SCHEDULE = [
+  {id:'s1',  date:'MAY 7 AT 10:00 AM EASTERN', title:'Opening Session',                          sub:'Main Session Zoom Room', type:'main',  topic:'Welcome, orientation and kick-off for Day 1.', zoomType:'main'},
+  {id:'s2',  date:'MAY 7 AT 11:00 AM EASTERN', title:'15 Minute Break',                          sub:'',                       type:'break'},
+  {id:'s3',  date:'MAY 7 AT 11:15 AM EASTERN', title:'Masterminding Session #1',                  sub:'Breakout Rooms',         type:'mm',    topic:'Your first hot-seat mastermind session. Come prepared with your challenge!', zoomKey:'session1'},
+  {id:'s4',  date:'MAY 7 AT 1:15 PM EASTERN',  title:'15 Minute Break',                          sub:'',                       type:'break'},
+  {id:'s5',  date:'MAY 7 AT 1:30 PM EASTERN',  title:'Breakfast/Lunch/Dinner with Peers',         sub:'Main Session Zoom Room', type:'main',  topic:'A relaxed meal break to connect with fellow masterminders.', zoomType:'main'},
+  {id:'s6',  date:'MAY 7 AT 2:00 PM EASTERN',  title:'15 Minute Break',                          sub:'',                       type:'break'},
+  {id:'s7',  date:'MAY 7 AT 2:15 PM EASTERN',  title:'Masterminding Session #2',                  sub:'Breakout Rooms',         type:'mm',    topic:'Your second hot-seat mastermind session.', zoomKey:'session2'},
+  {id:'s8',  date:'MAY 7 AT 4:15 PM EASTERN',  title:'15 Minute Break',                          sub:'',                       type:'break'},
+  {id:'s9',  date:'MAY 7 AT 4:30 PM EASTERN',  title:'Day 1 Debrief and Wrap-Up',                sub:'Main Session Zoom Room', type:'main',  topic:"Reflect on the day's insights and set intentions for Day 2.", zoomType:'main'},
+  {id:'s10', date:'MAY 7 AT 5:00 PM EASTERN',  title:'30 Minute Break',                          sub:'',                       type:'break'},
+  {id:'s11', date:'MAY 7 AT 5:30 PM EASTERN',  title:'Dinner',                                   sub:'Main Session Zoom Room', type:'main',  topic:'Virtual dinner social — informal time to connect with peers.', zoomType:'main'},
+  {id:'s12', date:'MAY 8 AT 10:00 AM EASTERN', title:'Day 2 — Group Session with Guest Speaker',  sub:'Main Session Zoom Room', type:'main',  topic:'Special guest speaker session. Details shared closer to the event.', zoomType:'main'},
+  {id:'s13', date:'MAY 8 AT 11:00 AM EASTERN', title:'15 Minute Break',                          sub:'',                       type:'break'},
+  {id:'s14', date:'MAY 8 AT 11:15 AM EASTERN', title:'Masterminding Session #3',                  sub:'Breakout Rooms',         type:'mm',    topic:'Your third mastermind session — often where the deepest breakthroughs happen.', zoomKey:'session3'},
+  {id:'s15', date:'MAY 8 AT 1:15 PM EASTERN',  title:'15 Minute Break',                          sub:'',                       type:'break'},
+  {id:'s16', date:'MAY 8 AT 1:30 PM EASTERN',  title:'Breakfast/Lunch/Dinner with Peers',         sub:'Main Session Zoom Room', type:'main',  topic:'Midday meal break with peers.', zoomType:'main'},
+  {id:'s17', date:'MAY 8 AT 2:15 PM EASTERN',  title:'15 Minute Break',                          sub:'',                       type:'break'},
+  {id:'s18', date:'MAY 8 AT 2:30 PM EASTERN',  title:'Masterminding Q&A Session with Danny',      sub:'Breakout Rooms',         type:'mm',    topic:'Live Q&A and masterminding session led by Danny Iny.', zoomKey:'session4'},
+  {id:'s19', date:'MAY 8 AT 3:45 PM EASTERN',  title:'15 Minute Break',                          sub:'',                       type:'break'},
+  {id:'s20', date:'MAY 8 AT 4:00 PM EASTERN',  title:'Final Debrief and Wrap-Up',                sub:'Main Session Zoom Room', type:'main',  topic:'Close out the mastermind, share commitments and celebrate progress.', zoomType:'main'},
+  {id:'s21', date:'MAY 8 AT 4:30 PM EASTERN',  title:'Close',                                    sub:'',                       type:'close'},
+];
+
+// ── COACHES / FACILITATORS ──
+// Add photo URLs, email, zoom link, and about/bio link for each coach.
+const COACHES = [
+  {
+    id:'ari', name:'Ari Iny', role:'Director of Growth', col:'#2233a8', ini:'AI',
+    photo:'YOUR_ARI_PHOTO_URL',
+    email:'ari@mirasee.com',
+    zoom:'YOUR_ARI_ZOOM_LINK',
+    about:'YOUR_ARI_BIO_LINK',
+    sessions:[
+      {label:'MM Session #1', day:'Day 1 — May 7', time:'11:15am ET', key:'session1'},
+      {label:'MM Session #3', day:'Day 2 — May 8', time:'11:15am ET', key:'session3'},
+    ]
+  },
+  {
+    id:'jay', name:'Jay Allyson', role:'Director of ACES', col:'#1a6b52', ini:'JA',
+    photo:'YOUR_JAY_PHOTO_URL',
+    email:'jay@mirasee.com',
+    zoom:'YOUR_JAY_ZOOM_LINK',
+    about:'YOUR_JAY_BIO_LINK',
+    sessions:[
+      {label:'MM Session #2', day:'Day 1 — May 7', time:'2:15pm ET', key:'session2'},
+    ]
+  },
+  {
+    id:'andrea', name:'Andrea Nino de Guzman', role:'ACES Coach', col:'#7c3090', ini:'AN',
+    photo:'YOUR_ANDREA_PHOTO_URL',
+    email:'andrea@mirasee.com',
+    zoom:'YOUR_ANDREA_ZOOM_LINK',
+    about:'YOUR_ANDREA_BIO_LINK',
+    sessions:[
+      {label:'MM Session #1', day:'Day 1 — May 7', time:'11:15am ET', key:'session1'},
+      {label:'MM Session #2', day:'Day 1 — May 7', time:'2:15pm ET',  key:'session2'},
+      {label:'MM Session #3', day:'Day 2 — May 8', time:'11:15am ET', key:'session3'},
+    ]
+  },
+  {
+    id:'jason', name:'Jason Muller', role:'ACES Coach', col:'#c0541a', ini:'JM',
+    photo:'YOUR_JASON_PHOTO_URL',
+    email:'jason@mirasee.com',
+    zoom:'YOUR_JASON_ZOOM_LINK',
+    about:'YOUR_JASON_BIO_LINK',
+    sessions:[
+      {label:'MM Session #1', day:'Day 1 — May 7', time:'11:15am ET', key:'session1'},
+      {label:'MM Session #2', day:'Day 1 — May 7', time:'2:15pm ET',  key:'session2'},
+      {label:'MM Session #3', day:'Day 2 — May 8', time:'11:15am ET', key:'session3'},
+    ]
+  },
+  {
+    id:'kevin', name:'Kevin Urban', role:'ACES Coach', col:'#8b1a1a', ini:'KU',
+    photo:'YOUR_KEVIN_PHOTO_URL',
+    email:'kevin@mirasee.com',
+    zoom:'YOUR_KEVIN_ZOOM_LINK',
+    about:'YOUR_KEVIN_BIO_LINK',
+    sessions:[
+      {label:'MM Session #2', day:'Day 1 — May 7', time:'2:15pm ET',  key:'session2'},
+      {label:'MM Session #3', day:'Day 2 — May 8', time:'11:15am ET', key:'session3'},
+    ]
+  },
+  {
+    id:'meredith', name:'Meredith Eisenberg', role:'ACES Coach', col:'#1a5c8b', ini:'ME',
+    photo:'YOUR_MEREDITH_PHOTO_URL',
+    email:'meredith@mirasee.com',
+    zoom:'YOUR_MEREDITH_ZOOM_LINK',
+    about:'YOUR_MEREDITH_BIO_LINK',
+    sessions:[
+      {label:'MM Session #3', day:'Day 2 — May 8', time:'11:15am ET', key:'session3'},
+    ]
+  },
+  {
+    id:'monica', name:'Monica Badiu', role:'ACES Coach', col:'#5e3a1a', ini:'MB',
+    photo:'YOUR_MONICA_PHOTO_URL',
+    email:'monica@mirasee.com',
+    zoom:'YOUR_MONICA_ZOOM_LINK',
+    about:'YOUR_MONICA_BIO_LINK',
+    sessions:[
+      {label:'MM Session #1', day:'Day 1 — May 7', time:'11:15am ET', key:'session1'},
+      {label:'MM Session #3', day:'Day 2 — May 8', time:'11:15am ET', key:'session3'},
+    ]
+  },
+];
+
+// ── ROOMS — one row per coach × session (MMs by Rooms tab) ──
+// Auto-generated from COACHES above. Each session slot becomes a row.
+const ROOMS = COACHES.flatMap(c =>
+  c.sessions.map(s => ({coachId: c.id, sessionLabel: s.label + ' – ' + s.day + ' @ ' + s.time, sessionKey: s.key}))
+);
+
+// ── ATTENDEES (MMs by Person + My Sessions) ──
+// Replace sample data with your full list.
+// rooms: sessionKey → friendly room name  |  zoomLinks: sessionKey → Zoom URL
+const ATTENDEES = [
+  {
+    name:'Anna Fraenkel', email:'anna@example.com',
+    rooms:   {session1:"Andrea's Zoom Room", session2:"Jason's Zoom Room",  session3:"Andrea's Zoom Room", session4:"Danny's Q&A Room"},
+    zoomLinks:{session1:'YOUR_ANDREA_ZOOM_LINK', session2:'YOUR_JASON_ZOOM_LINK', session3:'YOUR_ANDREA_ZOOM_LINK', session4:'YOUR_DANNY_ZOOM_LINK'}
+  },
+  {
+    name:'Annie Powell', email:'annie@example.com',
+    rooms:   {session1:"Ari's Zoom Room",    session2:"Jay's Zoom Room",    session3:"Ari's Zoom Room",    session4:"Danny's Q&A Room"},
+    zoomLinks:{session1:'YOUR_ARI_ZOOM_LINK',    session2:'YOUR_JAY_ZOOM_LINK',   session3:'YOUR_ARI_ZOOM_LINK',    session4:'YOUR_DANNY_ZOOM_LINK'}
+  },
+  {
+    name:'Betty Cabrera', email:'betty@example.com',
+    rooms:   {session1:"Monica's Zoom Room", session2:"Kevin's Zoom Room",  session3:"Monica's Zoom Room", session4:"Danny's Q&A Room"},
+    zoomLinks:{session1:'YOUR_MONICA_ZOOM_LINK',  session2:'YOUR_KEVIN_ZOOM_LINK',  session3:'YOUR_MONICA_ZOOM_LINK',  session4:'YOUR_DANNY_ZOOM_LINK'}
+  },
+  {
+    name:'Bobbie Ann Cole', email:'bobbie@example.com',
+    rooms:   {session1:"Jason's Zoom Room",  session2:"Andrea's Zoom Room", session3:"Jason's Zoom Room",  session4:"Danny's Q&A Room"},
+    zoomLinks:{session1:'YOUR_JASON_ZOOM_LINK',   session2:'YOUR_ANDREA_ZOOM_LINK', session3:'YOUR_JASON_ZOOM_LINK',   session4:'YOUR_DANNY_ZOOM_LINK'}
+  },
+  // ── Test account ──
+  {
+    name:'Demo Attendee', email:'demo@test.com',
+    rooms:   {session1:"Andrea's Zoom Room", session2:"Jason's Zoom Room",  session3:"Meredith's Zoom Room", session4:"Danny's Q&A Room"},
+    zoomLinks:{session1:'YOUR_ANDREA_ZOOM_LINK', session2:'YOUR_JASON_ZOOM_LINK', session3:'YOUR_MEREDITH_ZOOM_LINK', session4:'YOUR_DANNY_ZOOM_LINK'}
+  },
+];
+
+// ══════════════════════════════════════════════════════════
+//  HELPERS
+// ══════════════════════════════════════════════════════════
+const FAC_COLS=['#2233a8','#1a6b52','#7c3090','#c0541a','#8b1a1a','#1a5c8b','#5e3a1a'];
+function nCol(n){let h=0;for(const c of n)h+=c.charCodeAt(0);return FAC_COLS[h%FAC_COLS.length];}
+function ini(n){return n.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();}
+function coach(id){return COACHES.find(c=>c.id===id);}
+
+function avDiv(col,initials,size=52,round=true){
+  return `<div style="width:${size}px;height:${size}px;border-radius:${round?'50%':'10px'};background:${col};display:flex;align-items:center;justify-content:center;font-size:${Math.round(size*.32)}px;font-weight:700;color:#fff;flex-shrink:0;">${initials}</div>`;
+}
+function coachThumb(c, size=52, round=true){
+  const valid = c.photo && !c.photo.startsWith('YOUR_');
+  if(valid) return `<img src="${c.photo}" style="width:${size}px;height:${size}px;border-radius:${round?'50%':'10px'};object-fit:cover;flex-shrink:0;">`;
+  return avDiv(c.col, c.ini, size, round);
+}
+
+function zbtn(url, label){
+  if(!url||url.startsWith('YOUR_')) return `<span style="font-size:13px;color:#aaa;font-style:italic;">Zoom link coming soon</span>`;
+  return `<a class="zbtn" href="${url}" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="15" height="10" rx="2"/><path d="M17 9l5-2v10l-5-2V9z"/></svg>${label}</a>`;
+}
+
+// ══════════════════════════════════════════════════════════
+//  PAGE NAV
+// ══════════════════════════════════════════════════════════
+function openApp(){document.getElementById('info-mode').style.display='none';document.getElementById('app-mode').style.display='block';window.scrollTo(0,0);}
+function closeApp(){document.getElementById('app-mode').style.display='none';document.getElementById('info-mode').style.display='block';window.scrollTo(0,0);}
+function iscroll(sel){const el=document.querySelector(sel);if(el){const y=el.getBoundingClientRect().top+window.scrollY-65;window.scrollTo({top:y,behavior:'smooth'});}}
+function showTab(t){
+  document.querySelectorAll('.atab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.app-view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('tab-'+t).classList.add('active');
+  document.getElementById('view-'+t).classList.add('active');
+  document.querySelectorAll('.det').forEach(d=>d.classList.remove('active'));
+  document.querySelectorAll('#sched-list,#person-list,#room-list').forEach(l=>l.classList.remove('hidden'));
+}
+function resetApp(){document.querySelectorAll('.det').forEach(d=>d.classList.remove('active'));document.querySelectorAll('#sched-list,#person-list,#room-list').forEach(l=>l.classList.remove('hidden'));}
+
+// ══════════════════════════════════════════════════════════
+//  SCHEDULE
+// ══════════════════════════════════════════════════════════
+function rSched(f=''){
+  const el=document.getElementById('sched-list');
+  const rows=SCHEDULE.filter(s=>!f||s.title.toLowerCase().includes(f.toLowerCase())||s.date.toLowerCase().includes(f.toLowerCase()));
+  if(!rows.length){el.innerHTML='<div class="empty">No results.</div>';return;}
+  el.innerHTML=rows.map(s=>{
+    const click=s.type!=='break'&&s.type!=='close';
+    const arr=click?`<div class="lrow-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>`:'';
+    return `<div class="lrow ${!click?'lrow-nc':''}" ${click?`onclick="showSchedDet('${s.id}')"`:'style="cursor:default;"'}>
+      <div class="lrow-body">
+        <div class="lrow-lbl">${s.date}</div>
+        <div class="lrow-title">${s.title}</div>
+        ${s.sub?`<div class="lrow-sub">${s.sub}</div>`:''}
+      </div>${arr}</div>`;
+  }).join('');
+}
+function fSched(v){rSched(v);}
+function showSchedDet(id){
+  const s=SCHEDULE.find(x=>x.id===id);if(!s)return;
+  document.getElementById('sd-title').textContent=s.title;
+  document.getElementById('sd-meta').textContent=s.date+(s.sub?' · '+s.sub:'');
+  let b=`<p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:20px;">${s.topic||''}</p>`;
+  if(s.zoomType==='main') b+=zbtn('YOUR_MAIN_ZOOM_LINK','Join Main Zoom Room');
+  if(s.zoomKey) b+=`<p style="font-size:13px;color:#999;margin-top:8px;">Your specific breakout room link is in your <button onclick="showTab('my')" style="background:none;border:none;color:#2233a8;cursor:pointer;font-size:13px;padding:0;text-decoration:underline;">My Sessions</button> tab.</p>`;
+  document.getElementById('sd-body').innerHTML=b;
+  document.getElementById('sched-list').classList.add('hidden');
+  document.getElementById('sched-det').classList.add('active');
+}
+function hdDet(t){
+  document.getElementById(t+'- det'||`${t}-det`).classList.remove('active');
+  document.getElementById(`${t}-list`||t==='sched'?'sched-list':t==='person'?'person-list':'room-list').classList.remove('hidden');
+  // simple version:
+  if(t==='sched'){document.getElementById('sched-det').classList.remove('active');document.getElementById('sched-list').classList.remove('hidden');}
+  else if(t==='person'){document.getElementById('person-det').classList.remove('active');document.getElementById('person-list').classList.remove('hidden');}
+  else if(t==='room'){document.getElementById('room-det').classList.remove('active');document.getElementById('room-list').classList.remove('hidden');}
+}
+
+// ══════════════════════════════════════════════════════════
+//  MMs BY PERSON
+// ══════════════════════════════════════════════════════════
+function rPersons(f=''){
+  const el=document.getElementById('person-list');
+  const rows=[...ATTENDEES].sort((a,b)=>a.name.localeCompare(b.name)).filter(a=>!f||a.name.toLowerCase().includes(f.toLowerCase()));
+  if(!rows.length){el.innerHTML='<div class="empty">No attendees found.</div>';return;}
+  el.innerHTML=rows.map(a=>`<div class="lrow" onclick="showPersonDet('${a.email}')">
+    ${avDiv(nCol(a.name),ini(a.name),52,true)}
+    <div class="lrow-body"><div class="lrow-title">${a.name}</div><div class="lrow-sub">Personalized Masterminding Schedule</div></div>
+    <div class="lrow-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+  </div>`).join('');
+}
+function fPerson(v){rPersons(v);}
+function showPersonDet(email){
+  const a=ATTENDEES.find(x=>x.email===email);if(!a)return;
+  document.getElementById('pd-name').textContent=a.name;
+  const MM=[
+    {key:'session1',title:'Mastermind Session #1',   date:'Thursday, May 7 @ 11:15am Eastern'},
+    {key:'session2',title:'Mastermind Session #2',   date:'Thursday, May 7 @ 2:15pm Eastern'},
+    {key:'session3',title:'Mastermind Session #3',   date:'Friday, May 8 @ 11:15am Eastern'},
+    {key:'session4',title:'Masterminding Q&A with Danny', date:'Friday, May 8 @ 2:30pm Eastern'},
+  ];
+  document.getElementById('pd-body').innerHTML=MM.map(m=>`
+    <div class="sc-card">
+      <div class="sc-title">${m.title}</div>
+      <div class="sc-dt">${m.date}</div>
+      <div class="sc-dt">Room: <strong>${a.rooms?.[m.key]||'TBD'}</strong></div>
+      <div class="sc-topic-lbl">Topic</div>
+      <div class="sc-topic-val">Whatever you want to talk about!</div>
+      <div style="margin-top:12px;">${zbtn(a.zoomLinks?.[m.key]||'','Go to '+m.title+' Zoom')}</div>
+    </div>`).join('');
+  document.getElementById('person-list').classList.add('hidden');
+  document.getElementById('person-det').classList.add('active');
+}
+
+// ══════════════════════════════════════════════════════════
+//  MMs BY ROOMS (coaches)
+// ══════════════════════════════════════════════════════════
+function rRooms(f=''){
+  const el=document.getElementById('room-list');
+  const rows=ROOMS.filter(r=>{
+    if(!f)return true;
+    const c=coach(r.coachId);
+    return c.name.toLowerCase().includes(f.toLowerCase())||r.sessionLabel.toLowerCase().includes(f.toLowerCase());
+  });
+  if(!rows.length){el.innerHTML='<div class="empty" style="grid-column:1/-1">No rooms found.</div>';return;}
+  el.innerHTML=rows.map((r,i)=>{
+    const c=coach(r.coachId);
+    return `<div class="rooms-coach-card" onclick="showRoomDet(${i})">
+      ${coachThumb(c,56,true)}
+      <div style="flex:1;min-width:0;">
+        <div class="rooms-coach-name">${c.name}</div>
+        <div class="rooms-coach-session">${r.sessionLabel}</div>
+      </div>
+      <div class="rooms-coach-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+    </div>`;
+  }).join('');
+}
+function fRoom(v){rRooms(v);}
+function showRoomDet(i){
+  const r=ROOMS[i];const c=coach(r.coachId);
+  const validPhoto=c.photo&&!c.photo.startsWith('YOUR_');
+  document.getElementById('rd-photo-slot').innerHTML=validPhoto
+    ?`<img class="rd-photo" src="${c.photo}" alt="${c.name}">`
+    :`<div class="rd-av" style="background:${c.col};">${c.ini}</div>`;
+  document.getElementById('rd-name').textContent=c.name+"'s Zoom Room";
+  document.getElementById('rd-role').textContent=c.role+' · '+r.sessionLabel;
+  const inRoom=ATTENDEES.filter(a=>a.rooms?.[r.sessionKey]?.toLowerCase().includes(c.name.split(' ')[0].toLowerCase()));
+  let b=`<div style="margin-bottom:20px;">${zbtn(c.zoom,'Join '+c.name+"'s Zoom Room")}</div>`;
+  b+=`<h4 style="font-size:12px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:12px;">Attendees in this room</h4>`;
+  b+=inRoom.length
+    ?inRoom.map(a=>`<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #eee;">${avDiv(nCol(a.name),ini(a.name),36,true)}<span style="font-size:14px;font-weight:500;">${a.name}</span></div>`).join('')
+    :`<p style="font-size:14px;color:#999;">Attendee list confirmed once registration closes.</p>`;
+  document.getElementById('rd-body').innerHTML=b;
+  document.getElementById('room-list').classList.add('hidden');
+  document.getElementById('room-det').classList.add('active');
+}
+
+// ══════════════════════════════════════════════════════════
+//  FACILITATORS — rich cards with photo, email, zoom, about
+// ══════════════════════════════════════════════════════════
+function rFacs(){
+  document.getElementById('fac-grid').innerHTML=COACHES.map(c=>{
+    const validPhoto=c.photo&&!c.photo.startsWith('YOUR_');
+    const photoHtml=validPhoto
+      ?`<img src="${c.photo}" alt="${c.name}" style="width:100%;height:100%;object-fit:cover;object-position:top;">`
+      :`<div class="fac-card-photo-av" style="background:${c.col};">${c.ini}</div>`;
+    const validEmail=c.email&&!c.email.startsWith('YOUR_');
+    const validZoom=c.zoom&&!c.zoom.startsWith('YOUR_');
+    const validAbout=c.about&&!c.about.startsWith('YOUR_');
+    return `<div class="fac-card-new">
+      <div class="fac-card-photo-wrap">${photoHtml}</div>
+      <div class="fac-card-body">
+        <div class="fac-card-name">${c.name}</div>
+        <div class="fac-card-role">${c.role}</div>
+        <div class="fac-card-links">
+          ${validEmail?`<a class="fac-link" href="mailto:${c.email}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>${c.email}</a>`:''}
+          ${validZoom?`<a class="fac-link zoom" href="${c.zoom}" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="15" height="10" rx="2"/><path d="M17 9l5-2v10l-5-2V9z"/></svg>Join Zoom Room</a>`:''}
+          ${validAbout?`<a class="fac-link" href="${c.about}" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>About ${c.name.split(' ')[0]}</a>`:''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ══════════════════════════════════════════════════════════
+//  MY SESSIONS — email gated
+// ══════════════════════════════════════════════════════════
+const DAY1_MM=[
+  {key:'session1',title:'Masterminding Session #1',time:'11:15am ET',day:'Day 1 — Thursday, May 7'},
+  {key:'session2',title:'Masterminding Session #2',time:'2:15pm ET', day:'Day 1 — Thursday, May 7'},
+];
+const DAY2_MM=[
+  {key:'session3',title:'Masterminding Session #3',       time:'11:15am ET',day:'Day 2 — Friday, May 8'},
+  {key:'session4',title:'Masterminding Q&A with Danny',   time:'2:30pm ET', day:'Day 2 — Friday, May 8'},
+];
+
+function msLookup(){
+  const email=document.getElementById('ms-email-input').value.trim().toLowerCase();
+  const a=ATTENDEES.find(x=>x.email.toLowerCase()===email);
+  const err=document.getElementById('ms-error');
+  if(!a){err.style.display='block';return;}
+  err.style.display='none';
+  msShow(a);
+}
+function msShow(a){
+  const col=nCol(a.name);
+  document.getElementById('ms-avatar').textContent=ini(a.name);
+  document.getElementById('ms-avatar').style.background=col;
+  document.getElementById('ms-pname').textContent=a.name;
+  document.getElementById('ms-pemail').textContent=a.email;
+  const allSessions=[...DAY1_MM,...DAY2_MM];
+  // group by day
+  const day1=DAY1_MM;const day2=DAY2_MM;
+  function dayCards(sessions){
+    return sessions.map(m=>{
+      const room=a.rooms?.[m.key]||'TBD';
+      const zoom=a.zoomLinks?.[m.key]||'';
+      const validZoom=zoom&&!zoom.startsWith('YOUR_');
+      return `<div class="ms-session-card">
+        <div class="ms-session-time">${m.time}</div>
+        <div class="ms-session-title">${m.title}</div>
+        <div class="ms-session-room">Room: <span>${room}</span></div>
+        ${validZoom
+          ?`<a class="ms-zoom-btn" href="${zoom}" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="15" height="10" rx="2"/><path d="M17 9l5-2v10l-5-2V9z"/></svg>Join Zoom</a>`
+          :`<div class="ms-zoom-pending">Zoom link coming soon</div>`}
+      </div>`;
+    }).join('');
+  }
+  document.getElementById('ms-session-content').innerHTML=`
+    <div class="ms-day-group">
+      <div class="ms-day-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Day 1 — Thursday, May 7</div>
+      ${dayCards(day1)}
+    </div>
+    <div class="ms-day-group">
+      <div class="ms-day-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Day 2 — Friday, May 8</div>
+      ${dayCards(day2)}
+    </div>`;
+  document.getElementById('ms-gate').style.display='none';
+  document.getElementById('ms-logged').style.display='block';
+}
+function msSignout(){
+  document.getElementById('ms-email-input').value='';
+  document.getElementById('ms-error').style.display='none';
+  document.getElementById('ms-gate').style.display='block';
+  document.getElementById('ms-logged').style.display='none';
+}
+
+// ══════════════════════════════════════════════════════════
+//  MAGIC LINK — ?email=xxx auto-opens My Sessions
+// ══════════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded',()=>{
+  rSched(); rPersons(); rRooms(); rFacs();
+  const p=new URLSearchParams(window.location.search);
+  const em=p.get('email');
+  if(em){
+    openApp();
+    showTab('my');
+    const a=ATTENDEES.find(x=>x.email.toLowerCase()===em.toLowerCase());
+    if(a) setTimeout(()=>msShow(a),120);
+    else { document.getElementById('ms-email-input').value=em; }
+  }
+});
+</script>
+</body>
+</html>

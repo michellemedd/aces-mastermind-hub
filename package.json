@@ -1,0 +1,12 @@
+{
+  "name": "aces-mastermind-hub",
+  "version": "1.0.0",
+  "description": "ACES Mastermind Hub — May 2026 Virtual Event",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
