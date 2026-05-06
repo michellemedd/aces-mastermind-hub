@@ -10,42 +10,36 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body { font-family: 'Inter', system-ui, sans-serif; background: #f5f5f7; color: #1a1a1a; line-height: 1.5; min-height: 100vh; }
-button, input { font-family: inherit; }
+button, input, select, textarea { font-family: inherit; }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 
 :root {
-  --blue: #2233a8;
-  --blue-dark: #1a2890;
-  --blue-light: #3347c4;
-  --white: #fff;
-  --off: #f5f5f7;
-  --border: #e8e8e8;
-  --text: #1a1a1a;
-  --text-mid: #444;
-  --text-muted: #777;
-  --accent: #f5a623;
-  --gold: #f5a623;
-  --teal: #0d9e8a;
+  --blue: #2233a8; --blue-dark: #1a2890;
+  --off: #f5f5f7; --border: #e8e8e8;
+  --text: #1a1a1a; --text-mid: #444; --text-muted: #777;
+  --accent: #f5a623; --teal: #0d9e8a; --red: #e53e3e; --green: #2d9e5f;
   --row-hover: #f8f9ff;
 }
 
-/* ═══ SITE NAV ═══ */
-.site-nav { background: var(--blue); padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 200; }
-.site-logo { display: flex; align-items: center; gap: 8px; cursor: pointer; }
-.site-logo-box { width: 32px; height: 32px; background: rgba(255,255,255,0.15); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
-.site-logo-text { color: #fff; font-size: 14px; font-weight: 700; }
-.site-nav-links { display: flex; gap: 2px; }
-.snl { padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8); cursor: pointer; border: none; background: none; white-space: nowrap; transition: all 0.15s; }
-.snl:hover { background: rgba(255,255,255,0.12); color: #fff; }
-.snl.cta { background: var(--accent); color: #1a1a1a; font-weight: 600; }
-.snl.cta:hover { background: #f9b940; }
+/* ─── SITE NAV ─── */
+.site-nav { background:var(--blue); padding:0 20px; display:flex; align-items:center; justify-content:space-between; height:56px; position:sticky; top:0; z-index:200; }
+.site-logo { display:flex; align-items:center; gap:8px; cursor:pointer; }
+.site-logo-box { width:32px; height:32px; background:rgba(255,255,255,0.15); border-radius:7px; display:flex; align-items:center; justify-content:center; }
+.site-logo-text { color:#fff; font-size:14px; font-weight:700; }
+.site-nav-links { display:flex; gap:2px; }
+.snl { padding:6px 12px; border-radius:6px; font-size:13px; font-weight:500; color:rgba(255,255,255,0.8); cursor:pointer; border:none; background:none; white-space:nowrap; transition:all 0.15s; }
+.snl:hover { background:rgba(255,255,255,0.12); color:#fff; }
+.snl.cta { background:var(--accent); color:#1a1a1a; font-weight:600; }
+.snl.cta:hover { background:#f9b940; }
 
-/* ═══ INFO PAGE ═══ */
-#info-mode { display: block; }
-#app-mode  { display: none; }
+/* ─── INFO / APP / ADMIN MODES ─── */
+#info-mode { display:block; }
+#app-mode  { display:none; }
+#admin-mode { display:none; }
 
-.info-hero { background: var(--blue); padding: 56px 24px 60px; text-align: center; position: relative; overflow: hidden; }
+/* ─── HERO ─── */
+.info-hero { background:var(--blue); padding:56px 24px 60px; text-align:center; position:relative; overflow:hidden; }
 .info-hero::after { content:''; position:absolute; bottom:-1px; left:0; right:0; height:48px; background:var(--off); clip-path:ellipse(60% 100% at 50% 100%); }
 .hero-badge { display:inline-block; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25); border-radius:20px; font-size:12px; font-weight:600; color:rgba(255,255,255,0.9); padding:4px 14px; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:18px; }
 .info-hero h1 { font-size:clamp(28px,6vw,46px); font-weight:700; color:#fff; line-height:1.15; margin-bottom:12px; }
@@ -59,13 +53,14 @@ img { display: block; max-width: 100%; }
 .btn-o { display:inline-block; padding:11px 26px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.25); color:#fff; border-radius:8px; font-size:14px; font-weight:500; cursor:pointer; transition:all 0.15s; }
 .btn-o:hover { background:rgba(255,255,255,0.18); }
 
-.info-wrap { max-width: 800px; margin: 0 auto; padding: 0 24px; }
-.isec { padding: 48px 0; }
-.isec + .isec { border-top: 1px solid var(--border); }
+/* ─── INFO SECTIONS ─── */
+.info-wrap { max-width:800px; margin:0 auto; padding:0 24px; }
+.isec { padding:48px 0; }
+.isec+.isec { border-top:1px solid var(--border); }
 .isec-head { display:flex; align-items:center; gap:12px; background:var(--off); border-radius:10px; padding:14px 20px; margin-bottom:24px; }
 .isec-icon { width:36px; height:36px; border-radius:8px; background:var(--blue); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
 .isec-icon svg { width:18px; height:18px; }
-.isec-title { font-size:20px; font-weight:700; color:var(--text); }
+.isec-title { font-size:20px; font-weight:700; }
 .about-body { font-size:15px; color:var(--text-mid); line-height:1.75; margin-bottom:20px; }
 .about-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; }
 .about-card { border:1px solid var(--border); border-radius:10px; padding:18px; background:#fff; }
@@ -99,188 +94,217 @@ img { display: block; max-width: 100%; }
 .info-footer { background:var(--blue); color:rgba(255,255,255,0.5); text-align:center; padding:24px; font-size:13px; }
 .info-footer a { color:rgba(255,255,255,0.75); }
 
-/* ═══ APP MODE ═══ */
-#app-mode { background: var(--off); min-height: 100vh; }
-.app-wrap { max-width: 1020px; margin: 0 auto; min-height: 100vh; background: #fff; box-shadow: 0 0 0 1px var(--border); }
-.app-header { background: var(--blue); position: sticky; top: 0; z-index: 100; }
-.app-header-top { display: flex; align-items: center; padding: 0 20px; height: 52px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-.app-back { background: none; border: none; color: rgba(255,255,255,0.75); font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 6px 0; margin-right: 14px; }
-.app-back:hover { color: #fff; }
-.app-back svg { width: 14px; height: 14px; }
-.app-logo2 { display: flex; align-items: center; gap: 8px; cursor: pointer; }
-.app-logo2-box { width: 30px; height: 30px; background: rgba(255,255,255,0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
-.app-logo2-text { color: #fff; font-size: 13px; font-weight: 700; }
-.app-tabs { display: flex; overflow-x: auto; scrollbar-width: none; border-top: 1px solid rgba(255,255,255,0.1); }
-.app-tabs::-webkit-scrollbar { display: none; }
-.atab { flex-shrink: 0; display: flex; align-items: center; gap: 6px; padding: 0 16px; height: 48px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.65); cursor: pointer; border: none; background: none; border-bottom: 3px solid transparent; transition: all 0.15s; white-space: nowrap; }
-.atab:hover { color: rgba(255,255,255,0.9); }
-.atab.active { color: #fff; border-bottom-color: #fff; font-weight: 600; }
-.atab svg { width: 15px; height: 15px; opacity: 0.75; }
-.atab.active svg { opacity: 1; }
-.app-view { display: none; }
-.app-view.active { display: block; }
-.view-title { background: var(--blue); padding: 16px 20px 20px; }
-.view-title h2 { font-size: 22px; font-weight: 700; color: #fff; }
-.vsearch { margin-top: 10px; position: relative; }
-.vsearch svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; opacity: 0.5; }
-.vsearch input { width: 100%; padding: 9px 14px 9px 34px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; font-size: 14px; color: #fff; outline: none; }
-.vsearch input::placeholder { color: rgba(255,255,255,0.5); }
-.vsearch input:focus { background: rgba(255,255,255,0.22); }
+/* ─── APP MODE ─── */
+#app-mode { background:var(--off); min-height:100vh; }
+.app-wrap { max-width:1020px; margin:0 auto; min-height:100vh; background:#fff; box-shadow:0 0 0 1px var(--border); }
+.app-header { background:var(--blue); position:sticky; top:0; z-index:100; }
+.app-header-top { display:flex; align-items:center; padding:0 20px; height:52px; border-bottom:1px solid rgba(255,255,255,0.1); }
+.app-back { background:none; border:none; color:rgba(255,255,255,0.75); font-size:13px; cursor:pointer; display:flex; align-items:center; gap:5px; padding:6px 0; margin-right:14px; }
+.app-back:hover { color:#fff; }
+.app-back svg { width:14px; height:14px; }
+.app-logo2 { display:flex; align-items:center; gap:8px; cursor:pointer; }
+.app-logo2-box { width:30px; height:30px; background:rgba(255,255,255,0.15); border-radius:6px; display:flex; align-items:center; justify-content:center; }
+.app-logo2-text { color:#fff; font-size:13px; font-weight:700; }
+.app-tabs { display:flex; overflow-x:auto; scrollbar-width:none; border-top:1px solid rgba(255,255,255,0.1); }
+.app-tabs::-webkit-scrollbar { display:none; }
+.atab { flex-shrink:0; display:flex; align-items:center; gap:6px; padding:0 16px; height:48px; font-size:13px; font-weight:500; color:rgba(255,255,255,0.65); cursor:pointer; border:none; background:none; border-bottom:3px solid transparent; transition:all 0.15s; white-space:nowrap; }
+.atab:hover { color:rgba(255,255,255,0.9); }
+.atab.active { color:#fff; border-bottom-color:#fff; font-weight:600; }
+.atab svg { width:15px; height:15px; opacity:0.75; }
+.atab.active svg { opacity:1; }
+.app-view { display:none; }
+.app-view.active { display:block; }
+.view-title { background:var(--blue); padding:16px 20px 20px; }
+.view-title h2 { font-size:22px; font-weight:700; color:#fff; }
+.vsearch { margin-top:10px; position:relative; }
+.vsearch svg { position:absolute; left:11px; top:50%; transform:translateY(-50%); width:15px; height:15px; opacity:0.5; }
+.vsearch input { width:100%; padding:9px 14px 9px 34px; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.2); border-radius:8px; font-size:14px; color:#fff; outline:none; }
+.vsearch input::placeholder { color:rgba(255,255,255,0.5); }
+.vsearch input:focus { background:rgba(255,255,255,0.22); }
 
 /* list rows */
-.lrow { display: flex; align-items: center; padding: 14px 20px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.1s; gap: 12px; }
-.lrow:hover { background: var(--row-hover); }
-.lrow-body { flex: 1; min-width: 0; }
-.lrow-lbl { font-size: 11px; font-weight: 600; color: var(--blue); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1px; }
-.lrow-title { font-size: 15px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.lrow-sub { font-size: 13px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.lrow-arr { color: #ccc; flex-shrink: 0; }
-.lrow-arr svg { width: 16px; height: 16px; }
-.lrow-nc { cursor: default; }
-.lrow-nc:hover { background: transparent; }
+.lrow { display:flex; align-items:center; padding:14px 20px; border-bottom:1px solid var(--border); cursor:pointer; transition:background 0.1s; gap:12px; }
+.lrow:hover { background:var(--row-hover); }
+.lrow-body { flex:1; min-width:0; }
+.lrow-lbl { font-size:11px; font-weight:600; color:var(--blue); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:1px; }
+.lrow-title { font-size:15px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.lrow-sub { font-size:13px; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.lrow-arr { color:#ccc; flex-shrink:0; }
+.lrow-arr svg { width:16px; height:16px; }
+.lrow-nc { cursor:default; }
+.lrow-nc:hover { background:transparent; }
 
 /* detail */
-.det { display: none; }
-.det.active { display: block; }
-.det-head { background: var(--blue); padding: 18px 20px 22px; color: #fff; }
-.det-back { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,0.7); cursor: pointer; border: none; background: none; margin-bottom: 12px; padding: 0; }
-.det-back:hover { color: #fff; }
-.det-back svg { width: 14px; height: 14px; }
-.det-name { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 3px; }
-.det-sub { font-size: 14px; color: rgba(255,255,255,0.65); }
-.det-body { padding: 20px; }
+.det { display:none; }
+.det.active { display:block; }
+.det-head { background:var(--blue); padding:18px 20px 22px; color:#fff; }
+.det-back { display:flex; align-items:center; gap:6px; font-size:13px; color:rgba(255,255,255,0.7); cursor:pointer; border:none; background:none; margin-bottom:12px; padding:0; }
+.det-back:hover { color:#fff; }
+.det-back svg { width:14px; height:14px; }
+.det-name { font-size:22px; font-weight:700; color:#fff; margin-bottom:3px; }
+.det-sub { font-size:14px; color:rgba(255,255,255,0.65); }
+.det-body { padding:20px; }
+.sc-card { border:1px solid var(--border); border-radius:10px; padding:18px 20px; margin-bottom:14px; background:#fff; }
+.sc-title { font-size:16px; font-weight:700; margin-bottom:10px; }
+.sc-dt { font-size:14px; color:var(--text-muted); margin-bottom:2px; }
+.sc-dt strong { color:var(--text); font-weight:500; }
+.sc-topic-lbl { font-size:12px; color:var(--text-muted); margin:10px 0 2px; text-transform:uppercase; letter-spacing:0.05em; font-weight:600; }
+.sc-topic-val { font-size:14px; margin-bottom:14px; }
+.zbtn { display:inline-flex; align-items:center; gap:7px; padding:9px 20px; background:var(--blue); color:#fff; border-radius:8px; font-size:13px; font-weight:600; border:none; cursor:pointer; transition:background 0.15s; text-decoration:none; }
+.zbtn:hover { background:var(--blue-dark); }
+.zbtn svg { width:14px; height:14px; }
 
-/* standard session card (used in schedule detail, person detail) */
-.sc-card { border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin-bottom: 14px; background: #fff; }
-.sc-title { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
-.sc-dt { font-size: 14px; color: var(--text-muted); margin-bottom: 2px; }
-.sc-dt strong { color: var(--text); font-weight: 500; }
-.sc-topic-lbl { font-size: 12px; color: var(--text-muted); margin: 10px 0 2px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
-.sc-topic-val { font-size: 14px; color: var(--text); margin-bottom: 14px; }
-.zbtn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 20px; background: var(--blue); color: #fff; border-radius: 8px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; transition: background 0.15s; text-decoration: none; }
-.zbtn:hover { background: var(--blue-dark); }
-.zbtn svg { width: 14px; height: 14px; }
+/* My Sessions */
+.ms-gate { padding:0; }
+.ms-gate-inner { min-height:500px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px 24px; background:linear-gradient(160deg,#1a2890 0%,#2233a8 40%,#1a6b8a 100%); }
+.ms-gate-card { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); border-radius:16px; padding:36px 32px; width:100%; max-width:420px; text-align:center; }
+.ms-gate-icon { width:56px; height:56px; border-radius:14px; background:rgba(245,166,35,0.2); border:1px solid rgba(245,166,35,0.35); display:flex; align-items:center; justify-content:center; margin:0 auto 18px; }
+.ms-gate-icon svg { width:26px; height:26px; color:var(--accent); }
+.ms-gate-title { font-size:20px; font-weight:700; color:#fff; margin-bottom:8px; }
+.ms-gate-sub { font-size:14px; color:rgba(255,255,255,0.6); margin-bottom:24px; line-height:1.65; }
+.ms-input { width:100%; padding:11px 14px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:8px; font-size:14px; color:#fff; margin-bottom:10px; outline:none; transition:border-color 0.15s; }
+.ms-input:focus { border-color:var(--accent); background:rgba(255,255,255,0.15); }
+.ms-input::placeholder { color:rgba(255,255,255,0.35); }
+.ms-btn { width:100%; padding:11px; background:var(--accent); color:#1a1a1a; border:none; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; transition:all 0.15s; }
+.ms-btn:hover { background:#f9b940; }
+.ms-error { font-size:13px; color:#ff7b7b; margin-top:8px; display:none; }
+.ms-logged { display:none; background:linear-gradient(160deg,#1a2890 0%,#2233a8 40%,#1a6b8a 100%); padding:24px 20px 40px; min-height:500px; }
+.ms-profile { display:flex; align-items:center; gap:14px; margin-bottom:24px; }
+.ms-avatar { width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700; color:#fff; flex-shrink:0; border:2px solid rgba(255,255,255,0.3); }
+.ms-profile-name { font-size:18px; font-weight:700; color:#fff; }
+.ms-profile-email { font-size:13px; color:rgba(255,255,255,0.5); }
+.ms-signout { margin-left:auto; font-size:12px; color:rgba(255,255,255,0.5); background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); padding:5px 12px; border-radius:6px; cursor:pointer; flex-shrink:0; }
+.ms-signout:hover { color:#fff; }
+.ms-day-group { margin-bottom:28px; }
+.ms-day-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:20px; padding:5px 14px; font-size:12px; font-weight:600; color:rgba(255,255,255,0.8); margin-bottom:14px; }
+.ms-session-card { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:16px 18px; margin-bottom:10px; border-left:3px solid var(--accent); }
+.ms-session-time { font-size:11px; font-weight:600; color:var(--accent); letter-spacing:0.07em; text-transform:uppercase; margin-bottom:5px; }
+.ms-session-title { font-size:15px; font-weight:700; color:#fff; margin-bottom:6px; }
+.ms-session-room { font-size:13px; color:rgba(255,255,255,0.6); margin-bottom:12px; }
+.ms-session-room span { color:rgba(255,255,255,0.85); font-weight:500; }
+.ms-zoom-btn { display:inline-flex; align-items:center; gap:7px; padding:8px 18px; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25); color:#fff; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none; transition:all 0.15s; }
+.ms-zoom-btn:hover { background:rgba(255,255,255,0.25); }
+.ms-zoom-btn svg { width:14px; height:14px; }
+.ms-zoom-pending { font-size:13px; color:rgba(255,255,255,0.4); font-style:italic; }
 
-/* ═══ MY SESSIONS — unique gated design ═══ */
-.ms-gate { padding: 0; }
-.ms-gate-inner {
-  min-height: 500px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 40px 24px;
-  background: linear-gradient(160deg, #1a2890 0%, #2233a8 40%, #1a6b8a 100%);
-}
-.ms-gate-card {
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 16px; padding: 36px 32px; width: 100%; max-width: 420px; text-align: center;
-  backdrop-filter: blur(8px);
-}
-.ms-gate-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(245,166,35,0.2); border: 1px solid rgba(245,166,35,0.35); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
-.ms-gate-icon svg { width: 26px; height: 26px; color: var(--accent); }
-.ms-gate-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-.ms-gate-sub { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 24px; line-height: 1.65; }
-.ms-input { width: 100%; padding: 11px 14px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; font-size: 14px; color: #fff; margin-bottom: 10px; outline: none; transition: border-color 0.15s; }
-.ms-input:focus { border-color: var(--accent); background: rgba(255,255,255,0.15); }
-.ms-input::placeholder { color: rgba(255,255,255,0.35); }
-.ms-btn { width: 100%; padding: 11px; background: var(--accent); color: #1a1a1a; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.15s; }
-.ms-btn:hover { background: #f9b940; transform: translateY(-1px); }
-.ms-error { font-size: 13px; color: #ff7b7b; margin-top: 8px; display: none; }
+/* Rooms */
+.rooms-coach-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); }
+.rooms-coach-card { border-bottom:1px solid var(--border); border-right:1px solid var(--border); padding:20px; display:flex; gap:14px; align-items:flex-start; cursor:pointer; transition:background 0.1s; }
+.rooms-coach-card:hover { background:var(--row-hover); }
+.rooms-coach-name { font-size:15px; font-weight:600; margin-bottom:2px; }
+.rooms-coach-session { font-size:13px; color:var(--text-muted); }
+.rooms-coach-arr { margin-left:auto; color:#ccc; flex-shrink:0; }
+.rooms-coach-arr svg { width:16px; height:16px; }
 
-/* My Sessions — logged-in view */
-.ms-logged {
-  display: none;
-  background: linear-gradient(160deg, #1a2890 0%, #2233a8 40%, #1a6b8a 100%);
-  padding: 24px 20px 40px;
-  min-height: 500px;
-}
-.ms-profile { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
-.ms-avatar { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #fff; flex-shrink: 0; border: 2px solid rgba(255,255,255,0.3); }
-.ms-profile-name { font-size: 18px; font-weight: 700; color: #fff; }
-.ms-profile-email { font-size: 13px; color: rgba(255,255,255,0.5); }
-.ms-signout { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 6px; cursor: pointer; flex-shrink: 0; }
-.ms-signout:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
-.ms-section-label { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+/* Facilitators */
+.fac-grid-new { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:16px; padding:20px; }
+.fac-card-new { border:1px solid var(--border); border-radius:14px; overflow:hidden; background:#fff; transition:box-shadow 0.15s; }
+.fac-card-new:hover { box-shadow:0 6px 24px rgba(34,51,168,0.1); }
+.fac-card-photo-wrap { background:var(--off); height:160px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.fac-card-photo-wrap img { width:100%; height:100%; object-fit:cover; object-position:top; }
+.fac-card-av { width:80px; height:80px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:28px; font-weight:700; color:#fff; }
+.fac-card-body { padding:16px; }
+.fac-card-name { font-size:15px; font-weight:700; margin-bottom:2px; }
+.fac-card-role { font-size:12px; color:var(--text-muted); margin-bottom:14px; text-transform:uppercase; letter-spacing:0.05em; font-weight:600; }
+.fac-card-links { display:flex; flex-direction:column; gap:8px; }
+.fac-link { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--blue); padding:7px 10px; border-radius:7px; border:1px solid rgba(34,51,168,0.15); background:rgba(34,51,168,0.04); transition:all 0.15s; }
+.fac-link:hover { background:rgba(34,51,168,0.1); }
+.fac-link svg { width:14px; height:14px; flex-shrink:0; }
+.fac-link.zoom { color:var(--teal); border-color:rgba(13,158,138,0.2); background:rgba(13,158,138,0.05); }
+.fac-link.zoom:hover { background:rgba(13,158,138,0.12); }
+.rd-head { background:var(--blue); padding:18px 20px 22px; }
+.rd-back { display:flex; align-items:center; gap:6px; font-size:13px; color:rgba(255,255,255,0.7); cursor:pointer; border:none; background:none; margin-bottom:14px; padding:0; }
+.rd-back:hover { color:#fff; }
+.rd-back svg { width:14px; height:14px; }
+.rd-profile { display:flex; align-items:center; gap:14px; }
+.rd-av { width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:700; color:#fff; border:2px solid rgba(255,255,255,0.25); flex-shrink:0; }
+.rd-name { font-size:20px; font-weight:700; color:#fff; margin-bottom:3px; }
+.rd-role { font-size:14px; color:rgba(255,255,255,0.65); }
 
-/* Day timeline cards */
-.ms-day-group { margin-bottom: 28px; }
-.ms-day-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 5px 14px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 14px; letter-spacing: 0.04em; }
-.ms-session-card {
-  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 18px; margin-bottom: 10px;
-  border-left: 3px solid var(--accent);
-}
-.ms-session-time { font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 5px; }
-.ms-session-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; }
-.ms-session-room { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 12px; }
-.ms-session-room span { color: rgba(255,255,255,0.85); font-weight: 500; }
-.ms-zoom-btn { display: inline-flex; align-items: center; gap: 7px; padding: 8px 18px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.15s; cursor: pointer; }
-.ms-zoom-btn:hover { background: rgba(255,255,255,0.25); }
-.ms-zoom-btn svg { width: 14px; height: 14px; }
-.ms-zoom-pending { font-size: 13px; color: rgba(255,255,255,0.4); font-style: italic; }
+/* ─── ADMIN MODE ─── */
+.admin-wrap { max-width:1100px; margin:0 auto; min-height:100vh; background:#fff; }
+.admin-topbar { background:var(--blue); padding:0 24px; display:flex; align-items:center; justify-content:space-between; height:56px; position:sticky; top:0; z-index:100; }
+.admin-topbar-title { color:#fff; font-size:15px; font-weight:700; display:flex; align-items:center; gap:8px; }
+.admin-topbar-title svg { width:16px; height:16px; opacity:0.8; }
+.admin-back-btn { font-size:13px; color:rgba(255,255,255,0.7); background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:5px; }
+.admin-back-btn:hover { color:#fff; }
+.admin-back-btn svg { width:14px; height:14px; }
+.admin-save-status { font-size:12px; padding:4px 12px; border-radius:20px; font-weight:600; }
+.admin-save-status.saved { background:rgba(45,158,95,0.2); color:#2d9e5f; }
+.admin-save-status.saving { background:rgba(245,166,35,0.2); color:#b07a1a; }
+.admin-save-status.error { background:rgba(229,62,62,0.15); color:#c53030; }
+.admin-body { display:flex; min-height:calc(100vh - 56px); }
+.admin-sidebar { width:200px; flex-shrink:0; border-right:1px solid var(--border); padding:16px 0; position:sticky; top:56px; height:calc(100vh - 56px); overflow-y:auto; background:#fff; }
+.admin-nav-item { display:flex; align-items:center; gap:9px; padding:10px 18px; font-size:13px; font-weight:500; color:var(--text-muted); cursor:pointer; border:none; background:none; width:100%; text-align:left; transition:all 0.15s; border-left:3px solid transparent; }
+.admin-nav-item:hover { color:var(--text); background:var(--off); }
+.admin-nav-item.active { color:var(--blue); background:rgba(34,51,168,0.06); border-left-color:var(--blue); font-weight:600; }
+.admin-nav-item svg { width:15px; height:15px; flex-shrink:0; }
+.admin-content { flex:1; padding:28px; overflow-y:auto; }
+.admin-section { display:none; }
+.admin-section.active { display:block; }
+.admin-section-title { font-size:20px; font-weight:700; margin-bottom:4px; }
+.admin-section-sub { font-size:14px; color:var(--text-muted); margin-bottom:24px; }
+.admin-table-wrap { border:1px solid var(--border); border-radius:10px; overflow:hidden; margin-bottom:20px; overflow-x:auto; }
+.admin-table { width:100%; border-collapse:collapse; }
+.admin-table th { background:var(--off); font-size:12px; font-weight:600; color:var(--text-muted); padding:10px 14px; text-align:left; border-bottom:1px solid var(--border); white-space:nowrap; }
+.admin-table td { font-size:13px; padding:10px 14px; border-bottom:1px solid var(--border); vertical-align:middle; }
+.admin-table tr:last-child td { border-bottom:none; }
+.admin-table tr:hover td { background:var(--off); }
+.editable-cell { cursor:pointer; border-radius:4px; padding:3px 6px; margin:-3px -6px; transition:background 0.1s; display:inline-block; min-width:40px; }
+.editable-cell:hover { background:rgba(34,51,168,0.08); }
+.cell-input { border:none; background:transparent; font-size:13px; font-family:inherit; width:100%; min-width:120px; outline:none; color:var(--text); }
+.admin-tag { display:inline-block; font-size:11px; font-weight:600; padding:2px 8px; border-radius:20px; }
+.tag-blue { background:#e8ecff; color:#2233a8; }
+.tag-green { background:#e6f7ef; color:#1a7a46; }
+.tag-gray { background:var(--off); color:var(--text-muted); }
+.btn-add { display:inline-flex; align-items:center; gap:6px; padding:8px 18px; background:var(--blue); color:#fff; border:none; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; transition:background 0.15s; }
+.btn-add:hover { background:var(--blue-dark); }
+.btn-add svg { width:14px; height:14px; }
+.btn-danger { background:none; border:1px solid rgba(229,62,62,0.3); color:var(--red); border-radius:6px; padding:5px 10px; font-size:12px; cursor:pointer; transition:all 0.15s; }
+.btn-danger:hover { background:rgba(229,62,62,0.08); }
+.admin-add-form { background:var(--off); border:1px solid var(--border); border-radius:10px; padding:20px; margin-bottom:24px; }
+.admin-add-form h4 { font-size:14px; font-weight:600; margin-bottom:16px; }
+.form-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; margin-bottom:14px; }
+.form-field { display:flex; flex-direction:column; gap:4px; }
+.form-field label { font-size:12px; font-weight:600; color:var(--text-muted); }
+.form-field input, .form-field select { padding:8px 10px; border:1px solid var(--border); border-radius:7px; font-size:13px; background:#fff; outline:none; transition:border-color 0.15s; }
+.form-field input:focus, .form-field select:focus { border-color:var(--blue); }
+.form-actions { display:flex; gap:8px; }
+.admin-login-wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; background:var(--off); }
+.admin-login-card { background:#fff; border:1px solid var(--border); border-radius:14px; padding:36px 32px; width:100%; max-width:380px; text-align:center; }
+.admin-login-icon { width:52px; height:52px; background:#e8ecff; border-radius:12px; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; }
+.admin-login-icon svg { width:24px; height:24px; color:var(--blue); }
+.admin-login-title { font-size:20px; font-weight:700; margin-bottom:6px; }
+.admin-login-sub { font-size:14px; color:var(--text-muted); margin-bottom:22px; }
+.admin-input { width:100%; padding:10px 14px; border:1px solid var(--border); border-radius:8px; font-size:14px; margin-bottom:10px; outline:none; transition:border-color 0.15s; }
+.admin-input:focus { border-color:var(--blue); }
+.admin-login-btn { width:100%; padding:11px; background:var(--blue); color:#fff; border:none; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; }
+.admin-login-btn:hover { background:var(--blue-dark); }
+.admin-login-error { font-size:13px; color:var(--red); margin-top:8px; display:none; }
 
-/* ═══ ROOMS (coaches) ═══ */
-.rooms-coach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 0; }
-.rooms-coach-card { border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); padding: 20px; display: flex; gap: 14px; align-items: flex-start; cursor: pointer; transition: background 0.1s; }
-.rooms-coach-card:hover { background: var(--row-hover); }
-.rooms-coach-photo { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-.rooms-coach-av { width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #fff; }
-.rooms-coach-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
-.rooms-coach-session { font-size: 13px; color: var(--text-muted); }
-.rooms-coach-arr { margin-left: auto; color: #ccc; flex-shrink: 0; }
-.rooms-coach-arr svg { width: 16px; height: 16px; }
+/* Toast */
+.toast { position:fixed; bottom:24px; right:24px; background:#1a1a1a; color:#fff; padding:12px 20px; border-radius:8px; font-size:14px; font-weight:500; z-index:9999; opacity:0; transform:translateY(8px); transition:all 0.25s; pointer-events:none; }
+.toast.show { opacity:1; transform:translateY(0); }
+.toast.success { background:#2d9e5f; }
+.toast.error { background:#c53030; }
+.empty { text-align:center; padding:48px 24px; color:var(--text-muted); font-size:14px; }
+.hidden { display:none !important; }
 
-/* ═══ FACILITATORS — rich cards ═══ */
-.fac-grid-new { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 16px; padding: 20px; }
-.fac-card-new { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: #fff; transition: box-shadow 0.15s; }
-.fac-card-new:hover { box-shadow: 0 6px 24px rgba(34,51,168,0.1); }
-.fac-card-photo-wrap { background: var(--off); height: 160px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.fac-card-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-.fac-card-photo-av { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; color: #fff; }
-.fac-card-body { padding: 16px; }
-.fac-card-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
-.fac-card-role { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
-.fac-card-links { display: flex; flex-direction: column; gap: 8px; }
-.fac-link { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--blue); text-decoration: none; padding: 7px 10px; border-radius: 7px; border: 1px solid rgba(34,51,168,0.15); background: rgba(34,51,168,0.04); transition: all 0.15s; }
-.fac-link:hover { background: rgba(34,51,168,0.1); border-color: rgba(34,51,168,0.3); }
-.fac-link svg { width: 14px; height: 14px; flex-shrink: 0; }
-.fac-link.zoom { color: var(--teal); border-color: rgba(13,158,138,0.2); background: rgba(13,158,138,0.05); }
-.fac-link.zoom:hover { background: rgba(13,158,138,0.12); }
-
-/* room detail */
-.rd-head { background: var(--blue); padding: 18px 20px 22px; }
-.rd-back { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,0.7); cursor: pointer; border: none; background: none; margin-bottom: 14px; padding: 0; }
-.rd-back:hover { color: #fff; }
-.rd-back svg { width: 14px; height: 14px; }
-.rd-profile { display: flex; align-items: center; gap: 14px; }
-.rd-photo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.3); flex-shrink: 0; }
-.rd-av { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; color: #fff; background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.25); flex-shrink: 0; }
-.rd-name { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 3px; }
-.rd-role { font-size: 14px; color: rgba(255,255,255,0.65); }
-
-/* misc */
-.empty { text-align: center; padding: 48px 24px; color: var(--text-muted); font-size: 14px; }
-.hidden { display: none !important; }
 @media(max-width:560px){
-  .site-nav-links .snl:not(.cta){ display: none; }
-  .sched-2col{ grid-template-columns:1fr; }
-  .fac-grid-new { grid-template-columns: 1fr 1fr; }
-  .ms-gate-card { padding: 28px 20px; }
+  .site-nav-links .snl:not(.cta){ display:none; }
+  .admin-sidebar { display:none; }
+  .sched-2col { grid-template-columns:1fr; }
+  .fac-grid-new { grid-template-columns:1fr 1fr; }
 }
 </style>
 </head>
 <body>
 
-<!-- ═══════════ INFO PAGE ═══════════ -->
+<!-- ════════ INFO PAGE ════════ -->
 <div id="info-mode">
   <nav class="site-nav">
     <div class="site-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-      <div class="site-logo-box">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <text x="1" y="18" font-family="serif" font-size="17" font-weight="800" fill="white">A</text>
-          <circle cx="19" cy="5" r="2.5" fill="#f5a623"/>
-          <circle cx="22" cy="12" r="1.8" fill="#5ecfb0"/>
-          <circle cx="19" cy="19" r="2" fill="#7cba6b"/>
-        </svg>
-      </div>
+      <div class="site-logo-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><text x="1" y="18" font-family="serif" font-size="17" font-weight="800" fill="white">A</text><circle cx="19" cy="5" r="2.5" fill="#f5a623"/><circle cx="22" cy="12" r="1.8" fill="#5ecfb0"/><circle cx="19" cy="19" r="2" fill="#7cba6b"/></svg></div>
       <span class="site-logo-text">ACES Mastermind Hub</span>
     </div>
     <div class="site-nav-links">
@@ -293,12 +317,12 @@ img { display: block; max-width: 100%; }
   </nav>
 
   <div class="info-hero">
-    <div class="hero-badge">May 7–8, 2026 &nbsp;·&nbsp; Virtual Event</div>
+    <div class="hero-badge" id="hero-badge-dates">May 7–8, 2026 · Virtual Event</div>
     <h1>ACES Mastermind Hub</h1>
     <p class="hero-sub">Everything you need for the ACES Virtual Mastermind — in one place.</p>
     <div class="hero-pills">
-      <div class="hpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>May 7–8, 2026</div>
-      <div class="hpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Starts 10:00am Eastern</div>
+      <div class="hpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span id="pill-dates">May 7–8, 2026</span></div>
+      <div class="hpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span id="pill-time">Starts 10:00am Eastern</span></div>
       <div class="hpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="15" height="10" rx="2"/><path d="M17 9l5-2v10l-5-2V9z"/></svg>Zoom · Virtual</div>
       <div class="hpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Members Only · Free</div>
     </div>
@@ -310,12 +334,9 @@ img { display: block; max-width: 100%; }
 
   <div class="info-wrap">
     <div id="about" class="isec">
-      <div class="isec-head">
-        <div class="isec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01" stroke-linecap="round"/></svg></div>
-        <span class="isec-title">What is the Mastermind?</span>
-      </div>
-      <p class="about-body">The ACES Mastermind is an exclusive two-day virtual experience designed for ACES coaching entrepreneurs. It's a structured, high-impact peer experience where you'll tap into the collective intelligence of a small group of fellow entrepreneurs, get dedicated hot-seat time on your most pressing challenge, and walk away with a clear path forward — plus an accountability network that keeps you in motion.</p>
-      <p class="about-body">This event is built on one core belief: entrepreneurs grow faster together than alone. Every session is facilitated by an expert ACES coach who ensures every participant leaves with something real and actionable.</p>
+      <div class="isec-head"><div class="isec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01" stroke-linecap="round"/></svg></div><span class="isec-title">What is the Mastermind?</span></div>
+      <p class="about-body">The ACES Mastermind is an exclusive two-day virtual experience designed for ACES coaching entrepreneurs. Get dedicated hot-seat time on your most pressing challenge and walk away with a clear path forward — plus an accountability network that keeps you in motion.</p>
+      <p class="about-body">Every session is facilitated by an expert ACES coach who ensures every participant leaves with something real and actionable.</p>
       <div class="about-grid">
         <div class="about-card"><div class="about-card-icon">🎯</div><h4>Hot-seat masterminding</h4><p>Your challenge gets dedicated group focus — structured facilitation, not just open conversation.</p></div>
         <div class="about-card"><div class="about-card-icon">🤝</div><h4>Peer intelligence</h4><p>Small groups of ACES entrepreneurs who understand your world and are invested in your success.</p></div>
@@ -323,646 +344,507 @@ img { display: block; max-width: 100%; }
         <div class="about-card"><div class="about-card-icon">🎁</div><h4>Free for members</h4><p>Exclusively for ACES program members. No extra cost — just register and show up ready.</p></div>
       </div>
     </div>
-
     <div id="logistics" class="isec">
-      <div class="isec-head">
-        <div class="isec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.17.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.64-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg></div>
-        <span class="isec-title">Full Logistics</span>
-      </div>
-      <table class="log-table">
-        <thead><tr><th>Detail</th><th>Info</th></tr></thead>
-        <tbody>
-          <tr><td>📅 Date(s)</td><td>May 7 &amp; 8, 2026</td></tr>
-          <tr><td>⏰ Duration</td><td>2 days &nbsp;·&nbsp; Day 1: 10:00am–6:15pm ET &nbsp;·&nbsp; Day 2: 10:00am–4:30pm ET</td></tr>
-          <tr><td>📍 Location / Format</td><td>Zoom · Virtual</td></tr>
-          <tr><td>🔗 Main Zoom Room</td><td><a href="YOUR_MAIN_ZOOM_LINK" target="_blank">ACES Main Session Zoom Room ↗</a></td></tr>
-          <tr><td>👥 Group Size</td><td>Small mastermind groups — intimate by design</td></tr>
-          <tr><td>✅ What's Included</td><td>All sessions, facilitation, recordings</td></tr>
-          <tr><td>📞 Questions?</td><td><a href="mailto:aces@learn.mirasee.com">aces@learn.mirasee.com</a></td></tr>
-        </tbody>
-      </table>
-      <p class="log-note">Your personal breakout room Zoom links are in your confirmation email — or use the "My Sessions" portal to look them up instantly.</p>
+      <div class="isec-head"><div class="isec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.17.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.64-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg></div><span class="isec-title">Full Logistics</span></div>
+      <table class="log-table"><thead><tr><th>Detail</th><th>Info</th></tr></thead><tbody id="logistics-tbody"></tbody></table>
+      <p class="log-note">Your personal breakout room Zoom links are in your confirmation email — or use the My Sessions portal to look them up instantly.</p>
     </div>
-
     <div id="register" class="isec">
-      <div class="isec-head">
-        <div class="isec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <span class="isec-title">Registration Link</span>
-      </div>
+      <div class="isec-head"><div class="isec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="isec-title">Registration Link</span></div>
       <div class="reg-box">
         <h3>Register for the May 2026 Mastermind</h3>
-        <p>Exclusively for ACES coaching program members. Attendance is free — spots are limited. Register now to secure your place and receive your Zoom links.</p>
-        <a class="btn-p" href="YOUR_REGISTRATION_LINK_HERE" target="_blank" style="font-size:15px;padding:13px 32px;">👉 Register for the Mastermind</a>
-        <div class="reg-who">
-          <h4>Who this is for</h4>
-          <p>Active ACES coaching program members who are ready to bring their #1 business challenge and invest two focused days growing alongside peers.</p>
-        </div>
+        <p>Exclusively for ACES coaching program members. Attendance is free — spots are limited.</p>
+        <a class="btn-p" id="register-link" href="#" target="_blank" style="font-size:15px;padding:13px 32px;">👉 Register for the Mastermind</a>
+        <div class="reg-who"><h4>Who this is for</h4><p id="register-qualifier">Active ACES coaching program members ready to invest two focused days growing alongside peers.</p></div>
       </div>
     </div>
-
     <div id="schedule" class="isec">
-      <div class="isec-head">
-        <div class="isec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-        <span class="isec-title">Schedule One-Pager</span>
-      </div>
-      <div class="sched-2col">
-        <div>
-          <div class="sched-day-h">Day 1 — Thursday, May 7</div>
-          <table class="sched-t">
-            <thead><tr><th>Time</th><th>Session</th></tr></thead>
-            <tbody>
-              <tr><td>10:00am</td><td>Opening Session</td></tr>
-              <tr><td>11:00am</td><td class="sched-brk">Break (15 min)</td></tr>
-              <tr><td>11:15am</td><td class="sched-mm">Masterminding Session #1</td></tr>
-              <tr><td>1:15pm</td><td class="sched-brk">Break (15 min)</td></tr>
-              <tr><td>1:30pm</td><td>Lunch / Dinner with Peers</td></tr>
-              <tr><td>2:00pm</td><td class="sched-brk">Break (15 min)</td></tr>
-              <tr><td>2:15pm</td><td class="sched-mm">Masterminding Session #2</td></tr>
-              <tr><td>4:15pm</td><td class="sched-brk">Break (15 min)</td></tr>
-              <tr><td>4:30pm</td><td>Day 1 Debrief &amp; Wrap-Up</td></tr>
-              <tr><td>5:00pm</td><td class="sched-brk">Break (30 min)</td></tr>
-              <tr><td>5:30pm</td><td>Dinner / Supper with Peers</td></tr>
-              <tr><td>6:15pm</td><td>Close</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <div class="sched-day-h">Day 2 — Friday, May 8</div>
-          <table class="sched-t">
-            <thead><tr><th>Time</th><th>Session</th></tr></thead>
-            <tbody>
-              <tr><td>10:00am</td><td>Guest Speaker Session</td></tr>
-              <tr><td>11:00am</td><td class="sched-brk">Break (15 min)</td></tr>
-              <tr><td>11:15am</td><td class="sched-mm">Masterminding Session #3</td></tr>
-              <tr><td>1:15pm</td><td class="sched-brk">Break (15 min)</td></tr>
-              <tr><td>1:30pm</td><td>Lunch / Dinner with Peers</td></tr>
-              <tr><td>2:15pm</td><td class="sched-brk">Break (15 min)</td></tr>
-              <tr><td>2:30pm</td><td class="sched-mm">Masterminding Q&amp;A with Danny</td></tr>
-              <tr><td>3:45pm</td><td class="sched-brk">Break (15 min)</td></tr>
-              <tr><td>4:00pm</td><td>Final Debrief &amp; Wrap-Up</td></tr>
-              <tr><td>4:30pm</td><td>Close</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div style="margin-top:20px;">
-        <button class="btn-p" onclick="openApp()">Open the Full MM App &amp; My Sessions ›</button>
-      </div>
+      <div class="isec-head"><div class="isec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><span class="isec-title">Schedule One-Pager</span></div>
+      <div class="sched-2col" id="info-schedule-wrap"></div>
+      <div style="margin-top:20px;"><button class="btn-p" onclick="openApp()">Open the Full MM App &amp; My Sessions ›</button></div>
     </div>
   </div>
-
-  <div class="info-footer">
-    ACES Business Acceleration &nbsp;·&nbsp; May 2026 Virtual Mastermind &nbsp;·&nbsp;
-    <a href="mailto:aces@learn.mirasee.com">aces@learn.mirasee.com</a>
-  </div>
+  <div class="info-footer">ACES Business Acceleration &nbsp;·&nbsp; <span id="footer-dates">May 2026</span> Virtual Mastermind &nbsp;·&nbsp; <a id="footer-email" href="mailto:aces@learn.mirasee.com">aces@learn.mirasee.com</a></div>
 </div>
 
-<!-- ═══════════ APP MODE ═══════════ -->
+<!-- ════════ APP MODE ════════ -->
 <div id="app-mode">
   <div class="app-wrap">
     <div class="app-header">
       <div class="app-header-top">
-        <button class="app-back" onclick="closeApp()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-          Hub
-        </button>
+        <button class="app-back" onclick="closeApp()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>Hub</button>
         <div class="app-logo2" onclick="resetApp()">
-          <div class="app-logo2-box">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <text x="1" y="18" font-family="serif" font-size="17" font-weight="800" fill="white">A</text>
-              <circle cx="19" cy="5" r="2.5" fill="#f5a623"/>
-              <circle cx="22" cy="12" r="1.8" fill="#5ecfb0"/>
-              <circle cx="19" cy="19" r="2" fill="#7cba6b"/>
-            </svg>
-          </div>
+          <div class="app-logo2-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><text x="1" y="18" font-family="serif" font-size="17" font-weight="800" fill="white">A</text><circle cx="19" cy="5" r="2.5" fill="#f5a623"/><circle cx="22" cy="12" r="1.8" fill="#5ecfb0"/><circle cx="19" cy="19" r="2" fill="#7cba6b"/></svg></div>
           <span class="app-logo2-text">ACES Mastermind</span>
         </div>
       </div>
       <div class="app-tabs">
-        <button class="atab active" id="tab-sched" onclick="showTab('sched')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          Schedule
-        </button>
-        <button class="atab" id="tab-person" onclick="showTab('person')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-          MMs by Person
-        </button>
-        <button class="atab" id="tab-room" onclick="showTab('room')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="15" height="10" rx="2"/><path d="M17 9l5-2v10l-5-2V9z"/></svg>
-          MMs by Rooms
-        </button>
-        <button class="atab" id="tab-fac" onclick="showTab('fac')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M3 21v-1a9 9 0 0118 0v1"/></svg>
-          Facilitators
-        </button>
-        <button class="atab" id="tab-my" onclick="showTab('my')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4" stroke-linecap="round"/></svg>
-          My Sessions
-        </button>
+        <button class="atab active" id="tab-sched" onclick="showTab('sched')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Schedule</button>
+        <button class="atab" id="tab-person" onclick="showTab('person')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>MMs by Person</button>
+        <button class="atab" id="tab-room" onclick="showTab('room')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="15" height="10" rx="2"/><path d="M17 9l5-2v10l-5-2V9z"/></svg>MMs by Rooms</button>
+        <button class="atab" id="tab-fac" onclick="showTab('fac')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M3 21v-1a9 9 0 0118 0v1"/></svg>Facilitators</button>
+        <button class="atab" id="tab-my" onclick="showTab('my')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4" stroke-linecap="round"/></svg>My Sessions</button>
       </div>
     </div>
-
-    <!-- SCHEDULE -->
     <div id="view-sched" class="app-view active">
-      <div class="view-title"><h2>Schedule (Eastern Time)</h2>
-        <div class="vsearch"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg><input type="text" placeholder="Search" oninput="fSched(this.value)"></div>
-      </div>
+      <div class="view-title"><h2>Schedule (Eastern Time)</h2><div class="vsearch"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg><input type="text" placeholder="Search" oninput="fSched(this.value)"></div></div>
       <div id="sched-list"></div>
-      <div id="sched-det" class="det">
-        <div class="det-head">
-          <button class="det-back" onclick="hdDet('sched')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>Schedule</button>
-          <div class="det-name" id="sd-title"></div>
-          <div class="det-sub" id="sd-meta"></div>
-        </div>
-        <div class="det-body" id="sd-body"></div>
-      </div>
+      <div id="sched-det" class="det"><div class="det-head"><button class="det-back" onclick="hdDet('sched')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>Schedule</button><div class="det-name" id="sd-title"></div><div class="det-sub" id="sd-meta"></div></div><div class="det-body" id="sd-body"></div></div>
     </div>
-
-    <!-- MMs BY PERSON -->
     <div id="view-person" class="app-view">
-      <div class="view-title"><h2>MMs by Person</h2>
-        <div class="vsearch"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg><input type="text" placeholder="Search" oninput="fPerson(this.value)"></div>
-      </div>
+      <div class="view-title"><h2>MMs by Person</h2><div class="vsearch"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg><input type="text" placeholder="Search" oninput="fPerson(this.value)"></div></div>
       <div id="person-list"></div>
-      <div id="person-det" class="det">
-        <div class="det-head">
-          <button class="det-back" onclick="hdDet('person')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>MMs by Person</button>
-          <div class="det-name" id="pd-name"></div>
-          <div class="det-sub">Personalized Masterminding Schedule</div>
-        </div>
-        <div class="det-body" id="pd-body"></div>
-      </div>
+      <div id="person-det" class="det"><div class="det-head"><button class="det-back" onclick="hdDet('person')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>MMs by Person</button><div class="det-name" id="pd-name"></div><div class="det-sub">Personalized Masterminding Schedule</div></div><div class="det-body" id="pd-body"></div></div>
     </div>
-
-    <!-- MMs BY ROOMS (coaches) -->
     <div id="view-room" class="app-view">
-      <div class="view-title"><h2>MMs by Rooms</h2>
-        <div class="vsearch"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg><input type="text" placeholder="Search" oninput="fRoom(this.value)"></div>
-      </div>
+      <div class="view-title"><h2>MMs by Rooms</h2><div class="vsearch"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg><input type="text" placeholder="Search" oninput="fRoom(this.value)"></div></div>
       <div id="room-list" class="rooms-coach-grid"></div>
-      <div id="room-det" class="det">
-        <div class="rd-head">
-          <button class="rd-back" onclick="hdDet('room')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>MMs by Rooms</button>
-          <div class="rd-profile">
-            <div id="rd-photo-slot"></div>
-            <div><div class="rd-name" id="rd-name"></div><div class="rd-role" id="rd-role"></div></div>
-          </div>
-        </div>
-        <div class="det-body" id="rd-body"></div>
-      </div>
+      <div id="room-det" class="det"><div class="rd-head"><button class="rd-back" onclick="hdDet('room')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>MMs by Rooms</button><div class="rd-profile"><div id="rd-photo-slot"></div><div><div class="rd-name" id="rd-name"></div><div class="rd-role" id="rd-role"></div></div></div></div><div class="det-body" id="rd-body"></div></div>
     </div>
-
-    <!-- FACILITATORS -->
     <div id="view-fac" class="app-view">
       <div class="view-title"><h2>Facilitators</h2></div>
       <div class="fac-grid-new" id="fac-grid"></div>
     </div>
-
-    <!-- MY SESSIONS (email-gated) -->
     <div id="view-my" class="app-view">
-      <!-- Gate (shown by default) -->
-      <div class="ms-gate" id="ms-gate">
-        <div class="ms-gate-inner">
-          <div class="ms-gate-card">
-            <div class="ms-gate-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <rect x="3" y="11" width="18" height="11" rx="2"/>
-                <path d="M7 11V7a5 5 0 0110 0v4" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="ms-gate-title">Your Personal Schedule</div>
-            <div class="ms-gate-sub">Enter the email address you registered with to access your Zoom links and personalized session schedule.</div>
-            <input type="email" class="ms-input" id="ms-email-input" placeholder="your@email.com" onkeydown="if(event.key==='Enter')msLookup()">
-            <button class="ms-btn" onclick="msLookup()">View My Sessions</button>
-            <div class="ms-error" id="ms-error">No registration found for that email. Please check and try again.</div>
-          </div>
-        </div>
-      </div>
-      <!-- Logged-in view (hidden by default) -->
-      <div class="ms-logged" id="ms-logged">
-        <div class="ms-profile">
-          <div class="ms-avatar" id="ms-avatar"></div>
-          <div>
-            <div class="ms-profile-name" id="ms-pname"></div>
-            <div class="ms-profile-email" id="ms-pemail"></div>
-          </div>
-          <button class="ms-signout" onclick="msSignout()">Sign out</button>
-        </div>
-        <div id="ms-session-content"></div>
-      </div>
+      <div class="ms-gate" id="ms-gate"><div class="ms-gate-inner"><div class="ms-gate-card"><div class="ms-gate-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4" stroke-linecap="round"/></svg></div><div class="ms-gate-title">Your Personal Schedule</div><div class="ms-gate-sub">Enter the email address you registered with to access your Zoom links and personalized session schedule.</div><input type="email" class="ms-input" id="ms-email-input" placeholder="your@email.com" onkeydown="if(event.key==='Enter')msLookup()"><button class="ms-btn" onclick="msLookup()">View My Sessions</button><div class="ms-error" id="ms-error">No registration found for that email. Please check and try again.</div></div></div></div>
+      <div class="ms-logged" id="ms-logged"><div class="ms-profile"><div class="ms-avatar" id="ms-avatar"></div><div><div class="ms-profile-name" id="ms-pname"></div><div class="ms-profile-email" id="ms-pemail"></div></div><button class="ms-signout" onclick="msSignout()">Sign out</button></div><div id="ms-session-content"></div></div>
     </div>
-
   </div>
 </div>
 
+<!-- ════════ ADMIN ════════ -->
+<div id="admin-mode">
+  <div id="admin-login-screen" class="admin-login-wrap">
+    <div class="admin-login-card">
+      <div class="admin-login-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="var(--blue)"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+      <div class="admin-login-title">Admin Panel</div>
+      <div class="admin-login-sub">Enter your admin password to manage event content.</div>
+      <input type="password" class="admin-input" id="admin-pw-input" placeholder="Password" onkeydown="if(event.key==='Enter')adminLogin()">
+      <button class="admin-login-btn" onclick="adminLogin()">Sign In</button>
+      <div class="admin-login-error" id="admin-login-error">Incorrect password.</div>
+    </div>
+  </div>
+  <div id="admin-panel" style="display:none;">
+    <div class="admin-wrap">
+      <div class="admin-topbar">
+        <div class="admin-topbar-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>ACES Admin Panel</div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span class="admin-save-status saved" id="save-status">All saved</span>
+          <button class="admin-back-btn" onclick="closeAdmin()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>Back to Hub</button>
+        </div>
+      </div>
+      <div class="admin-body">
+        <div class="admin-sidebar">
+          <button class="admin-nav-item active" onclick="adminNav('settings',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Event Settings</button>
+          <button class="admin-nav-item" onclick="adminNav('schedule',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Schedule</button>
+          <button class="admin-nav-item" onclick="adminNav('coaches',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M3 21v-1a9 9 0 0118 0v1"/></svg>Coaches</button>
+          <button class="admin-nav-item" onclick="adminNav('attendees',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Attendees</button>
+          <button class="admin-nav-item" onclick="adminNav('password',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Password</button>
+        </div>
+        <div class="admin-content">
+          <div id="admin-settings" class="admin-section active">
+            <div class="admin-section-title">Event Settings</div>
+            <div class="admin-section-sub">Edit the hub page — dates, Zoom links, registration URL, and contact info.</div>
+            <div id="settings-form"></div>
+          </div>
+          <div id="admin-schedule" class="admin-section">
+            <div class="admin-section-title">Schedule</div>
+            <div class="admin-section-sub">Click any cell to edit it. Changes save instantly.</div>
+            <div class="admin-add-form"><h4>Add a new session</h4>
+              <div class="form-grid">
+                <div class="form-field"><label>Date/Time label</label><input id="ns-date" placeholder="MAY 7 AT 10:00 AM EASTERN"></div>
+                <div class="form-field"><label>Title</label><input id="ns-title" placeholder="Opening Session"></div>
+                <div class="form-field"><label>Sub-label</label><input id="ns-sub" placeholder="Main Session Zoom Room"></div>
+                <div class="form-field"><label>Type</label><select id="ns-type"><option value="main">Main room</option><option value="mm">Mastermind (breakout)</option><option value="break">Break</option><option value="close">Close</option></select></div>
+                <div class="form-field"><label>Topic / description</label><input id="ns-topic"></div>
+                <div class="form-field"><label>Zoom URL</label><input id="ns-zoom" placeholder="https://zoom.us/j/..."></div>
+              </div>
+              <div class="form-actions"><button class="btn-add" onclick="addScheduleItem()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Session</button></div>
+            </div>
+            <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Date/Time</th><th>Title</th><th>Type</th><th>Zoom URL</th><th>Topic</th><th></th></tr></thead><tbody id="schedule-admin-tbody"></tbody></table></div>
+          </div>
+          <div id="admin-coaches" class="admin-section">
+            <div class="admin-section-title">Coaches / Facilitators</div>
+            <div class="admin-section-sub">Click any cell to edit. For sessions, use comma-separated keys: session1,session2,session3,session4</div>
+            <div class="admin-add-form"><h4>Add a new coach</h4>
+              <div class="form-grid">
+                <div class="form-field"><label>Name</label><input id="nc-name" placeholder="Jane Smith"></div>
+                <div class="form-field"><label>Role</label><input id="nc-role" placeholder="ACES Coach"></div>
+                <div class="form-field"><label>Email</label><input id="nc-email" placeholder="jane@mirasee.com"></div>
+                <div class="form-field"><label>Photo URL</label><input id="nc-photo" placeholder="https://..."></div>
+                <div class="form-field"><label>Zoom Room URL</label><input id="nc-zoom" placeholder="https://zoom.us/j/..."></div>
+                <div class="form-field"><label>About/Bio URL</label><input id="nc-about" placeholder="https://..."></div>
+                <div class="form-field"><label>Sessions (comma-sep)</label><input id="nc-sessions" placeholder="session1,session2,session3"></div>
+              </div>
+              <div class="form-actions"><button class="btn-add" onclick="addCoach()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Coach</button></div>
+            </div>
+            <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Name</th><th>Role</th><th>Email</th><th>Photo URL</th><th>Zoom URL</th><th>About URL</th><th>Sessions</th><th></th></tr></thead><tbody id="coaches-admin-tbody"></tbody></table></div>
+          </div>
+          <div id="admin-attendees" class="admin-section">
+            <div class="admin-section-title">Attendees</div>
+            <div class="admin-section-sub">Manage registered entrepreneurs. Click any cell to edit in place.</div>
+            <div class="admin-add-form"><h4>Add an attendee</h4>
+              <div class="form-grid">
+                <div class="form-field"><label>Full name</label><input id="na-name"></div>
+                <div class="form-field"><label>Email</label><input id="na-email"></div>
+                <div class="form-field"><label>Session 1 room name</label><input id="na-r1" placeholder="Andrea's Zoom Room"></div>
+                <div class="form-field"><label>Session 1 Zoom URL</label><input id="na-z1" placeholder="https://zoom.us/j/..."></div>
+                <div class="form-field"><label>Session 2 room name</label><input id="na-r2" placeholder="Jason's Zoom Room"></div>
+                <div class="form-field"><label>Session 2 Zoom URL</label><input id="na-z2"></div>
+                <div class="form-field"><label>Session 3 room name</label><input id="na-r3"></div>
+                <div class="form-field"><label>Session 3 Zoom URL</label><input id="na-z3"></div>
+                <div class="form-field"><label>Session 4 room name</label><input id="na-r4" placeholder="Danny's Q&A Room"></div>
+                <div class="form-field"><label>Session 4 Zoom URL</label><input id="na-z4"></div>
+              </div>
+              <div class="form-actions"><button class="btn-add" onclick="addAttendee()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Attendee</button></div>
+            </div>
+            <div style="margin-bottom:12px;display:flex;gap:8px;align-items:center;">
+              <input id="attendee-search" placeholder="Search by name or email..." style="padding:8px 12px;border:1px solid var(--border);border-radius:7px;font-size:13px;width:280px;outline:none;" oninput="renderAttendeesAdmin(this.value)">
+              <span id="attendee-count" style="font-size:13px;color:var(--text-muted);"></span>
+            </div>
+            <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Name</th><th>Email</th><th>S1 Room</th><th>S2 Room</th><th>S3 Room</th><th>S4 Room</th><th></th></tr></thead><tbody id="attendees-admin-tbody"></tbody></table></div>
+          </div>
+          <div id="admin-password" class="admin-section">
+            <div class="admin-section-title">Change Admin Password</div>
+            <div class="admin-section-sub">Update the shared admin password.</div>
+            <div class="admin-add-form" style="max-width:400px;">
+              <div class="form-grid" style="grid-template-columns:1fr;">
+                <div class="form-field"><label>New password</label><input type="password" id="new-pw-1"></div>
+                <div class="form-field"><label>Confirm new password</label><input type="password" id="new-pw-2"></div>
+              </div>
+              <div class="form-actions"><button class="btn-add" onclick="changePassword()">Update Password</button></div>
+              <div id="pw-change-msg" style="margin-top:10px;font-size:13px;display:none;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
 <script>
-// ══════════════════════════════════════════════════════════
-//  DATA — Update all YOUR_* placeholders before going live
-// ══════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════
+//  API — calls your own Express server (no Supabase needed)
+// ═══════════════════════════════════════════════════════════════
+async function api(method, path, body) {
+  const opts = { method, headers: { 'Content-Type': 'application/json' } };
+  if (body) opts.body = JSON.stringify(body);
+  const res = await fetch('/api' + path, opts);
+  if (!res.ok) throw new Error(await res.text());
+  const text = await res.text();
+  return text ? JSON.parse(text) : null;
+}
 
-const SCHEDULE = [
-  {id:'s1',  date:'MAY 7 AT 10:00 AM EASTERN', title:'Opening Session',                          sub:'Main Session Zoom Room', type:'main',  topic:'Welcome, orientation and kick-off for Day 1.', zoomType:'main'},
-  {id:'s2',  date:'MAY 7 AT 11:00 AM EASTERN', title:'15 Minute Break',                          sub:'',                       type:'break'},
-  {id:'s3',  date:'MAY 7 AT 11:15 AM EASTERN', title:'Masterminding Session #1',                  sub:'Breakout Rooms',         type:'mm',    topic:'Your first hot-seat mastermind session. Come prepared with your challenge!', zoomKey:'session1'},
-  {id:'s4',  date:'MAY 7 AT 1:15 PM EASTERN',  title:'15 Minute Break',                          sub:'',                       type:'break'},
-  {id:'s5',  date:'MAY 7 AT 1:30 PM EASTERN',  title:'Breakfast/Lunch/Dinner with Peers',         sub:'Main Session Zoom Room', type:'main',  topic:'A relaxed meal break to connect with fellow masterminders.', zoomType:'main'},
-  {id:'s6',  date:'MAY 7 AT 2:00 PM EASTERN',  title:'15 Minute Break',                          sub:'',                       type:'break'},
-  {id:'s7',  date:'MAY 7 AT 2:15 PM EASTERN',  title:'Masterminding Session #2',                  sub:'Breakout Rooms',         type:'mm',    topic:'Your second hot-seat mastermind session.', zoomKey:'session2'},
-  {id:'s8',  date:'MAY 7 AT 4:15 PM EASTERN',  title:'15 Minute Break',                          sub:'',                       type:'break'},
-  {id:'s9',  date:'MAY 7 AT 4:30 PM EASTERN',  title:'Day 1 Debrief and Wrap-Up',                sub:'Main Session Zoom Room', type:'main',  topic:"Reflect on the day's insights and set intentions for Day 2.", zoomType:'main'},
-  {id:'s10', date:'MAY 7 AT 5:00 PM EASTERN',  title:'30 Minute Break',                          sub:'',                       type:'break'},
-  {id:'s11', date:'MAY 7 AT 5:30 PM EASTERN',  title:'Dinner',                                   sub:'Main Session Zoom Room', type:'main',  topic:'Virtual dinner social — informal time to connect with peers.', zoomType:'main'},
-  {id:'s12', date:'MAY 8 AT 10:00 AM EASTERN', title:'Day 2 — Group Session with Guest Speaker',  sub:'Main Session Zoom Room', type:'main',  topic:'Special guest speaker session. Details shared closer to the event.', zoomType:'main'},
-  {id:'s13', date:'MAY 8 AT 11:00 AM EASTERN', title:'15 Minute Break',                          sub:'',                       type:'break'},
-  {id:'s14', date:'MAY 8 AT 11:15 AM EASTERN', title:'Masterminding Session #3',                  sub:'Breakout Rooms',         type:'mm',    topic:'Your third mastermind session — often where the deepest breakthroughs happen.', zoomKey:'session3'},
-  {id:'s15', date:'MAY 8 AT 1:15 PM EASTERN',  title:'15 Minute Break',                          sub:'',                       type:'break'},
-  {id:'s16', date:'MAY 8 AT 1:30 PM EASTERN',  title:'Breakfast/Lunch/Dinner with Peers',         sub:'Main Session Zoom Room', type:'main',  topic:'Midday meal break with peers.', zoomType:'main'},
-  {id:'s17', date:'MAY 8 AT 2:15 PM EASTERN',  title:'15 Minute Break',                          sub:'',                       type:'break'},
-  {id:'s18', date:'MAY 8 AT 2:30 PM EASTERN',  title:'Masterminding Q&A Session with Danny',      sub:'Breakout Rooms',         type:'mm',    topic:'Live Q&A and masterminding session led by Danny Iny.', zoomKey:'session4'},
-  {id:'s19', date:'MAY 8 AT 3:45 PM EASTERN',  title:'15 Minute Break',                          sub:'',                       type:'break'},
-  {id:'s20', date:'MAY 8 AT 4:00 PM EASTERN',  title:'Final Debrief and Wrap-Up',                sub:'Main Session Zoom Room', type:'main',  topic:'Close out the mastermind, share commitments and celebrate progress.', zoomType:'main'},
-  {id:'s21', date:'MAY 8 AT 4:30 PM EASTERN',  title:'Close',                                    sub:'',                       type:'close'},
-];
+// ── LOCAL STATE ──────────────────────────────────────────────
+let SETTINGS  = {};
+let SCHEDULE  = [];
+let COACHES   = [];
+let ATTENDEES = [];
 
-// ── COACHES / FACILITATORS ──
-// Add photo URLs, email, zoom link, and about/bio link for each coach.
-const COACHES = [
-  {
-    id:'ari', name:'Ari Iny', role:'Director of Growth', col:'#2233a8', ini:'AI',
-    photo:'YOUR_ARI_PHOTO_URL',
-    email:'ari@mirasee.com',
-    zoom:'YOUR_ARI_ZOOM_LINK',
-    about:'YOUR_ARI_BIO_LINK',
-    sessions:[
-      {label:'MM Session #1', day:'Day 1 — May 7', time:'11:15am ET', key:'session1'},
-      {label:'MM Session #3', day:'Day 2 — May 8', time:'11:15am ET', key:'session3'},
-    ]
-  },
-  {
-    id:'jay', name:'Jay Allyson', role:'Director of ACES', col:'#1a6b52', ini:'JA',
-    photo:'YOUR_JAY_PHOTO_URL',
-    email:'jay@mirasee.com',
-    zoom:'YOUR_JAY_ZOOM_LINK',
-    about:'YOUR_JAY_BIO_LINK',
-    sessions:[
-      {label:'MM Session #2', day:'Day 1 — May 7', time:'2:15pm ET', key:'session2'},
-    ]
-  },
-  {
-    id:'andrea', name:'Andrea Nino de Guzman', role:'ACES Coach', col:'#7c3090', ini:'AN',
-    photo:'YOUR_ANDREA_PHOTO_URL',
-    email:'andrea@mirasee.com',
-    zoom:'YOUR_ANDREA_ZOOM_LINK',
-    about:'YOUR_ANDREA_BIO_LINK',
-    sessions:[
-      {label:'MM Session #1', day:'Day 1 — May 7', time:'11:15am ET', key:'session1'},
-      {label:'MM Session #2', day:'Day 1 — May 7', time:'2:15pm ET',  key:'session2'},
-      {label:'MM Session #3', day:'Day 2 — May 8', time:'11:15am ET', key:'session3'},
-    ]
-  },
-  {
-    id:'jason', name:'Jason Muller', role:'ACES Coach', col:'#c0541a', ini:'JM',
-    photo:'YOUR_JASON_PHOTO_URL',
-    email:'jason@mirasee.com',
-    zoom:'YOUR_JASON_ZOOM_LINK',
-    about:'YOUR_JASON_BIO_LINK',
-    sessions:[
-      {label:'MM Session #1', day:'Day 1 — May 7', time:'11:15am ET', key:'session1'},
-      {label:'MM Session #2', day:'Day 1 — May 7', time:'2:15pm ET',  key:'session2'},
-      {label:'MM Session #3', day:'Day 2 — May 8', time:'11:15am ET', key:'session3'},
-    ]
-  },
-  {
-    id:'kevin', name:'Kevin Urban', role:'ACES Coach', col:'#8b1a1a', ini:'KU',
-    photo:'YOUR_KEVIN_PHOTO_URL',
-    email:'kevin@mirasee.com',
-    zoom:'YOUR_KEVIN_ZOOM_LINK',
-    about:'YOUR_KEVIN_BIO_LINK',
-    sessions:[
-      {label:'MM Session #2', day:'Day 1 — May 7', time:'2:15pm ET',  key:'session2'},
-      {label:'MM Session #3', day:'Day 2 — May 8', time:'11:15am ET', key:'session3'},
-    ]
-  },
-  {
-    id:'meredith', name:'Meredith Eisenberg', role:'ACES Coach', col:'#1a5c8b', ini:'ME',
-    photo:'YOUR_MEREDITH_PHOTO_URL',
-    email:'meredith@mirasee.com',
-    zoom:'YOUR_MEREDITH_ZOOM_LINK',
-    about:'YOUR_MEREDITH_BIO_LINK',
-    sessions:[
-      {label:'MM Session #3', day:'Day 2 — May 8', time:'11:15am ET', key:'session3'},
-    ]
-  },
-  {
-    id:'monica', name:'Monica Badiu', role:'ACES Coach', col:'#5e3a1a', ini:'MB',
-    photo:'YOUR_MONICA_PHOTO_URL',
-    email:'monica@mirasee.com',
-    zoom:'YOUR_MONICA_ZOOM_LINK',
-    about:'YOUR_MONICA_BIO_LINK',
-    sessions:[
-      {label:'MM Session #1', day:'Day 1 — May 7', time:'11:15am ET', key:'session1'},
-      {label:'MM Session #3', day:'Day 2 — May 8', time:'11:15am ET', key:'session3'},
-    ]
-  },
-];
-
-// ── ROOMS — one row per coach × session (MMs by Rooms tab) ──
-// Auto-generated from COACHES above. Each session slot becomes a row.
-const ROOMS = COACHES.flatMap(c =>
-  c.sessions.map(s => ({coachId: c.id, sessionLabel: s.label + ' – ' + s.day + ' @ ' + s.time, sessionKey: s.key}))
-);
-
-// ── ATTENDEES (MMs by Person + My Sessions) ──
-// Replace sample data with your full list.
-// rooms: sessionKey → friendly room name  |  zoomLinks: sessionKey → Zoom URL
-const ATTENDEES = [
-  {
-    name:'Anna Fraenkel', email:'anna@example.com',
-    rooms:   {session1:"Andrea's Zoom Room", session2:"Jason's Zoom Room",  session3:"Andrea's Zoom Room", session4:"Danny's Q&A Room"},
-    zoomLinks:{session1:'YOUR_ANDREA_ZOOM_LINK', session2:'YOUR_JASON_ZOOM_LINK', session3:'YOUR_ANDREA_ZOOM_LINK', session4:'YOUR_DANNY_ZOOM_LINK'}
-  },
-  {
-    name:'Annie Powell', email:'annie@example.com',
-    rooms:   {session1:"Ari's Zoom Room",    session2:"Jay's Zoom Room",    session3:"Ari's Zoom Room",    session4:"Danny's Q&A Room"},
-    zoomLinks:{session1:'YOUR_ARI_ZOOM_LINK',    session2:'YOUR_JAY_ZOOM_LINK',   session3:'YOUR_ARI_ZOOM_LINK',    session4:'YOUR_DANNY_ZOOM_LINK'}
-  },
-  {
-    name:'Betty Cabrera', email:'betty@example.com',
-    rooms:   {session1:"Monica's Zoom Room", session2:"Kevin's Zoom Room",  session3:"Monica's Zoom Room", session4:"Danny's Q&A Room"},
-    zoomLinks:{session1:'YOUR_MONICA_ZOOM_LINK',  session2:'YOUR_KEVIN_ZOOM_LINK',  session3:'YOUR_MONICA_ZOOM_LINK',  session4:'YOUR_DANNY_ZOOM_LINK'}
-  },
-  {
-    name:'Bobbie Ann Cole', email:'bobbie@example.com',
-    rooms:   {session1:"Jason's Zoom Room",  session2:"Andrea's Zoom Room", session3:"Jason's Zoom Room",  session4:"Danny's Q&A Room"},
-    zoomLinks:{session1:'YOUR_JASON_ZOOM_LINK',   session2:'YOUR_ANDREA_ZOOM_LINK', session3:'YOUR_JASON_ZOOM_LINK',   session4:'YOUR_DANNY_ZOOM_LINK'}
-  },
-  // ── Test account ──
-  {
-    name:'Demo Attendee', email:'demo@test.com',
-    rooms:   {session1:"Andrea's Zoom Room", session2:"Jason's Zoom Room",  session3:"Meredith's Zoom Room", session4:"Danny's Q&A Room"},
-    zoomLinks:{session1:'YOUR_ANDREA_ZOOM_LINK', session2:'YOUR_JASON_ZOOM_LINK', session3:'YOUR_MEREDITH_ZOOM_LINK', session4:'YOUR_DANNY_ZOOM_LINK'}
-  },
-];
-
-// ══════════════════════════════════════════════════════════
-//  HELPERS
-// ══════════════════════════════════════════════════════════
-const FAC_COLS=['#2233a8','#1a6b52','#7c3090','#c0541a','#8b1a1a','#1a5c8b','#5e3a1a'];
+// ── HELPERS ──────────────────────────────────────────────────
+const FAC_COLS = ['#2233a8','#1a6b52','#7c3090','#c0541a','#8b1a1a','#1a5c8b','#5e3a1a'];
 function nCol(n){let h=0;for(const c of n)h+=c.charCodeAt(0);return FAC_COLS[h%FAC_COLS.length];}
-function ini(n){return n.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();}
-function coach(id){return COACHES.find(c=>c.id===id);}
+function ini(n){return(n||'?').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();}
+function avDiv(col,initials,size=52,round=true){return `<div style="width:${size}px;height:${size}px;border-radius:${round?'50%':'10px'};background:${col};display:flex;align-items:center;justify-content:center;font-size:${Math.round(size*.32)}px;font-weight:700;color:#fff;flex-shrink:0;">${initials}</div>`;}
+function coachThumb(c,size=52,round=true){const v=c.photo_url&&c.photo_url.startsWith('http');return v?`<img src="${c.photo_url}" style="width:${size}px;height:${size}px;border-radius:${round?'50%':'10px'};object-fit:cover;flex-shrink:0;">`:avDiv(c.color||nCol(c.name),ini(c.name),size,round);}
+function zbtn(url,label){if(!url||!url.startsWith('http'))return`<span style="font-size:13px;color:#aaa;font-style:italic;">Zoom link coming soon</span>`;return`<a class="zbtn" href="${url}" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="15" height="10" rx="2"/><path d="M17 9l5-2v10l-5-2V9z"/></svg>${label}</a>`;}
+function showToast(msg,type='success'){const t=document.getElementById('toast');t.textContent=msg;t.className=`toast show ${type}`;setTimeout(()=>t.classList.remove('show'),2800);}
+function setSaveStatus(s){const el=document.getElementById('save-status');if(!el)return;el.textContent=s==='saving'?'Saving…':s==='error'?'Error saving':'All saved';el.className='admin-save-status '+(s==='saving'?'saving':s==='error'?'error':'saved');}
 
-function avDiv(col,initials,size=52,round=true){
-  return `<div style="width:${size}px;height:${size}px;border-radius:${round?'50%':'10px'};background:${col};display:flex;align-items:center;justify-content:center;font-size:${Math.round(size*.32)}px;font-weight:700;color:#fff;flex-shrink:0;">${initials}</div>`;
-}
-function coachThumb(c, size=52, round=true){
-  const valid = c.photo && !c.photo.startsWith('YOUR_');
-  if(valid) return `<img src="${c.photo}" style="width:${size}px;height:${size}px;border-radius:${round?'50%':'10px'};object-fit:cover;flex-shrink:0;">`;
-  return avDiv(c.col, c.ini, size, round);
+// ── INIT ─────────────────────────────────────────────────────
+async function loadAll() {
+  try {
+    const [settings, schedule, coaches, attendees] = await Promise.all([
+      api('GET', '/settings'),
+      api('GET', '/schedule'),
+      api('GET', '/coaches'),
+      api('GET', '/attendees'),
+    ]);
+    SETTINGS  = settings  || {};
+    SCHEDULE  = schedule  || [];
+    COACHES   = coaches   || [];
+    ATTENDEES = attendees || [];
+    applySettings();
+    renderInfoSchedule();
+  } catch(e) {
+    console.warn('API not available — running in demo mode');
+  }
 }
 
-function zbtn(url, label){
-  if(!url||url.startsWith('YOUR_')) return `<span style="font-size:13px;color:#aaa;font-style:italic;">Zoom link coming soon</span>`;
-  return `<a class="zbtn" href="${url}" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="15" height="10" rx="2"/><path d="M17 9l5-2v10l-5-2V9z"/></svg>${label}</a>`;
+function applySettings() {
+  const S = SETTINGS;
+  const set = (id,val) => { const el=document.getElementById(id); if(el&&val) el.textContent=val; };
+  set('hero-badge-dates', (S.event_dates||'May 7–8, 2026')+' · Virtual Event');
+  set('pill-dates', S.event_dates||'May 7–8, 2026');
+  set('pill-time', 'Starts '+(S.event_time||'10:00am Eastern'));
+  set('footer-dates', S.event_dates||'May 2026');
+  set('register-qualifier', S.registration_qualifier||'');
+  const rl=document.getElementById('register-link');if(rl&&S.registration_link)rl.href=S.registration_link;
+  const fe=document.getElementById('footer-email');if(fe&&S.contact_email){fe.href='mailto:'+S.contact_email;fe.textContent=S.contact_email;}
+  const tbody=document.getElementById('logistics-tbody');
+  if(tbody) tbody.innerHTML=[
+    ['📅 Date(s)', S.event_dates||'May 7 & 8, 2026'],
+    ['⏰ Duration', '2 days · Day 1: 10:00am–6:15pm ET · Day 2: 10:00am–4:30pm ET'],
+    ['📍 Location / Format', 'Zoom · Virtual'],
+    ['🔗 Main Zoom Room', S.main_zoom?`<a href="${S.main_zoom}" target="_blank">ACES Main Session Zoom Room ↗</a>`:'TBD'],
+    ['👥 Group Size', 'Small mastermind groups — intimate by design'],
+    ['✅ What\'s Included', 'All sessions, facilitation, recordings'],
+    ['📞 Questions?', `<a href="mailto:${S.contact_email||'aces@learn.mirasee.com'}">${S.contact_email||'aces@learn.mirasee.com'}</a>`],
+  ].map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join('');
 }
 
-// ══════════════════════════════════════════════════════════
-//  PAGE NAV
-// ══════════════════════════════════════════════════════════
-function openApp(){document.getElementById('info-mode').style.display='none';document.getElementById('app-mode').style.display='block';window.scrollTo(0,0);}
+function renderInfoSchedule() {
+  const wrap=document.getElementById('info-schedule-wrap');if(!wrap)return;
+  const day1=SCHEDULE.filter(s=>s.date_label&&s.date_label.startsWith('MAY 7'));
+  const day2=SCHEDULE.filter(s=>s.date_label&&s.date_label.startsWith('MAY 8'));
+  const rows=items=>items.map(s=>{const cl=s.type==='mm'?' class="sched-mm"':s.type==='break'?' class="sched-brk"':'';const t=(s.date_label||'').replace(/MAY \d+ AT /,'').replace(' EASTERN','');return `<tr><td>${t}</td><td${cl}>${s.title}</td></tr>`;}).join('');
+  wrap.innerHTML=`<div><div class="sched-day-h">Day 1 — Thursday, May 7</div><table class="sched-t"><thead><tr><th>Time</th><th>Session</th></tr></thead><tbody>${rows(day1)}</tbody></table></div><div><div class="sched-day-h">Day 2 — Friday, May 8</div><table class="sched-t"><thead><tr><th>Time</th><th>Session</th></tr></thead><tbody>${rows(day2)}</tbody></table></div>`;
+}
+
+// ── PAGE NAV ─────────────────────────────────────────────────
+function openApp(){document.getElementById('info-mode').style.display='none';document.getElementById('app-mode').style.display='block';rSched();rPersons();rRooms();rFacs();window.scrollTo(0,0);}
 function closeApp(){document.getElementById('app-mode').style.display='none';document.getElementById('info-mode').style.display='block';window.scrollTo(0,0);}
+function openAdmin(){document.getElementById('info-mode').style.display='none';document.getElementById('app-mode').style.display='none';document.getElementById('admin-mode').style.display='block';window.scrollTo(0,0);}
+function closeAdmin(){document.getElementById('admin-mode').style.display='none';document.getElementById('info-mode').style.display='block';loadAll();}
 function iscroll(sel){const el=document.querySelector(sel);if(el){const y=el.getBoundingClientRect().top+window.scrollY-65;window.scrollTo({top:y,behavior:'smooth'});}}
-function showTab(t){
-  document.querySelectorAll('.atab').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.app-view').forEach(v=>v.classList.remove('active'));
-  document.getElementById('tab-'+t).classList.add('active');
-  document.getElementById('view-'+t).classList.add('active');
-  document.querySelectorAll('.det').forEach(d=>d.classList.remove('active'));
-  document.querySelectorAll('#sched-list,#person-list,#room-list').forEach(l=>l.classList.remove('hidden'));
-}
+function showTab(t){document.querySelectorAll('.atab').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.app-view').forEach(v=>v.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');document.getElementById('view-'+t).classList.add('active');document.querySelectorAll('.det').forEach(d=>d.classList.remove('active'));document.querySelectorAll('#sched-list,#person-list,#room-list').forEach(l=>l.classList.remove('hidden'));}
 function resetApp(){document.querySelectorAll('.det').forEach(d=>d.classList.remove('active'));document.querySelectorAll('#sched-list,#person-list,#room-list').forEach(l=>l.classList.remove('hidden'));}
+function hdDet(t){if(t==='sched'){document.getElementById('sched-det').classList.remove('active');document.getElementById('sched-list').classList.remove('hidden');}else if(t==='person'){document.getElementById('person-det').classList.remove('active');document.getElementById('person-list').classList.remove('hidden');}else{document.getElementById('room-det').classList.remove('active');document.getElementById('room-list').classList.remove('hidden');}}
 
-// ══════════════════════════════════════════════════════════
-//  SCHEDULE
-// ══════════════════════════════════════════════════════════
+// ── SCHEDULE ─────────────────────────────────────────────────
 function rSched(f=''){
   const el=document.getElementById('sched-list');
-  const rows=SCHEDULE.filter(s=>!f||s.title.toLowerCase().includes(f.toLowerCase())||s.date.toLowerCase().includes(f.toLowerCase()));
+  const rows=SCHEDULE.filter(s=>!f||s.title.toLowerCase().includes(f.toLowerCase())||s.date_label.toLowerCase().includes(f.toLowerCase()));
   if(!rows.length){el.innerHTML='<div class="empty">No results.</div>';return;}
-  el.innerHTML=rows.map(s=>{
-    const click=s.type!=='break'&&s.type!=='close';
-    const arr=click?`<div class="lrow-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>`:'';
-    return `<div class="lrow ${!click?'lrow-nc':''}" ${click?`onclick="showSchedDet('${s.id}')"`:'style="cursor:default;"'}>
-      <div class="lrow-body">
-        <div class="lrow-lbl">${s.date}</div>
-        <div class="lrow-title">${s.title}</div>
-        ${s.sub?`<div class="lrow-sub">${s.sub}</div>`:''}
-      </div>${arr}</div>`;
-  }).join('');
+  el.innerHTML=rows.map(s=>{const click=s.type!=='break'&&s.type!=='close';return `<div class="lrow ${!click?'lrow-nc':''}" ${click?`onclick="showSchedDet(${s.id})"`:''} ${!click?'style="cursor:default;"':''}><div class="lrow-body"><div class="lrow-lbl">${s.date_label||''}</div><div class="lrow-title">${s.title}</div>${s.sub_label?`<div class="lrow-sub">${s.sub_label}</div>`:''}</div>${click?`<div class="lrow-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>`:''}</div>`;}).join('');
 }
 function fSched(v){rSched(v);}
 function showSchedDet(id){
   const s=SCHEDULE.find(x=>x.id===id);if(!s)return;
   document.getElementById('sd-title').textContent=s.title;
-  document.getElementById('sd-meta').textContent=s.date+(s.sub?' · '+s.sub:'');
+  document.getElementById('sd-meta').textContent=(s.date_label||'')+(s.sub_label?' · '+s.sub_label:'');
   let b=`<p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:20px;">${s.topic||''}</p>`;
-  if(s.zoomType==='main') b+=zbtn('YOUR_MAIN_ZOOM_LINK','Join Main Zoom Room');
-  if(s.zoomKey) b+=`<p style="font-size:13px;color:#999;margin-top:8px;">Your specific breakout room link is in your <button onclick="showTab('my')" style="background:none;border:none;color:#2233a8;cursor:pointer;font-size:13px;padding:0;text-decoration:underline;">My Sessions</button> tab.</p>`;
+  const zu=s.zoom_url||(s.type==='main'?SETTINGS.main_zoom:'');
+  if(zu)b+=zbtn(zu,'Join Zoom Room');
+  if(s.type==='mm')b+=`<p style="font-size:13px;color:#999;margin-top:8px;">Your specific breakout room link is in your <button onclick="showTab('my')" style="background:none;border:none;color:#2233a8;cursor:pointer;font-size:13px;padding:0;text-decoration:underline;">My Sessions</button> tab.</p>`;
   document.getElementById('sd-body').innerHTML=b;
   document.getElementById('sched-list').classList.add('hidden');
   document.getElementById('sched-det').classList.add('active');
 }
-function hdDet(t){
-  document.getElementById(t+'- det'||`${t}-det`).classList.remove('active');
-  document.getElementById(`${t}-list`||t==='sched'?'sched-list':t==='person'?'person-list':'room-list').classList.remove('hidden');
-  // simple version:
-  if(t==='sched'){document.getElementById('sched-det').classList.remove('active');document.getElementById('sched-list').classList.remove('hidden');}
-  else if(t==='person'){document.getElementById('person-det').classList.remove('active');document.getElementById('person-list').classList.remove('hidden');}
-  else if(t==='room'){document.getElementById('room-det').classList.remove('active');document.getElementById('room-list').classList.remove('hidden');}
-}
 
-// ══════════════════════════════════════════════════════════
-//  MMs BY PERSON
-// ══════════════════════════════════════════════════════════
+// ── MMs BY PERSON ────────────────────────────────────────────
 function rPersons(f=''){
   const el=document.getElementById('person-list');
   const rows=[...ATTENDEES].sort((a,b)=>a.name.localeCompare(b.name)).filter(a=>!f||a.name.toLowerCase().includes(f.toLowerCase()));
   if(!rows.length){el.innerHTML='<div class="empty">No attendees found.</div>';return;}
-  el.innerHTML=rows.map(a=>`<div class="lrow" onclick="showPersonDet('${a.email}')">
-    ${avDiv(nCol(a.name),ini(a.name),52,true)}
-    <div class="lrow-body"><div class="lrow-title">${a.name}</div><div class="lrow-sub">Personalized Masterminding Schedule</div></div>
-    <div class="lrow-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
-  </div>`).join('');
+  el.innerHTML=rows.map(a=>`<div class="lrow" onclick="showPersonDet(${a.id})">${avDiv(nCol(a.name),ini(a.name),52,true)}<div class="lrow-body"><div class="lrow-title">${a.name}</div><div class="lrow-sub">Personalized Masterminding Schedule</div></div><div class="lrow-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div></div>`).join('');
 }
 function fPerson(v){rPersons(v);}
-function showPersonDet(email){
-  const a=ATTENDEES.find(x=>x.email===email);if(!a)return;
+function showPersonDet(id){
+  const a=ATTENDEES.find(x=>x.id===id);if(!a)return;
   document.getElementById('pd-name').textContent=a.name;
-  const MM=[
-    {key:'session1',title:'Mastermind Session #1',   date:'Thursday, May 7 @ 11:15am Eastern'},
-    {key:'session2',title:'Mastermind Session #2',   date:'Thursday, May 7 @ 2:15pm Eastern'},
-    {key:'session3',title:'Mastermind Session #3',   date:'Friday, May 8 @ 11:15am Eastern'},
-    {key:'session4',title:'Masterminding Q&A with Danny', date:'Friday, May 8 @ 2:30pm Eastern'},
-  ];
-  document.getElementById('pd-body').innerHTML=MM.map(m=>`
-    <div class="sc-card">
-      <div class="sc-title">${m.title}</div>
-      <div class="sc-dt">${m.date}</div>
-      <div class="sc-dt">Room: <strong>${a.rooms?.[m.key]||'TBD'}</strong></div>
-      <div class="sc-topic-lbl">Topic</div>
-      <div class="sc-topic-val">Whatever you want to talk about!</div>
-      <div style="margin-top:12px;">${zbtn(a.zoomLinks?.[m.key]||'','Go to '+m.title+' Zoom')}</div>
-    </div>`).join('');
+  const MM=[{title:'Masterminding Session #1',time:'11:15am ET',day:'Day 1 — May 7',room:a.room_s1,zoom:a.zoom_s1},{title:'Masterminding Session #2',time:'2:15pm ET',day:'Day 1 — May 7',room:a.room_s2,zoom:a.zoom_s2},{title:'Masterminding Session #3',time:'11:15am ET',day:'Day 2 — May 8',room:a.room_s3,zoom:a.zoom_s3},{title:'Masterminding Q&A with Danny',time:'2:30pm ET',day:'Day 2 — May 8',room:a.room_s4,zoom:a.zoom_s4}];
+  document.getElementById('pd-body').innerHTML=MM.map(m=>`<div class="sc-card"><div class="sc-title">${m.title}</div><div class="sc-dt">${m.day} @ ${m.time}</div><div class="sc-dt">Room: <strong>${m.room||'TBD'}</strong></div><div class="sc-topic-lbl">Topic</div><div class="sc-topic-val">Whatever you want to talk about!</div><div style="margin-top:12px;">${zbtn(m.zoom||'','Go to '+m.title+' Zoom')}</div></div>`).join('');
   document.getElementById('person-list').classList.add('hidden');
   document.getElementById('person-det').classList.add('active');
 }
 
-// ══════════════════════════════════════════════════════════
-//  MMs BY ROOMS (coaches)
-// ══════════════════════════════════════════════════════════
+// ── MMs BY ROOMS ─────────────────────────────────────────────
+const SESSION_LABELS={session1:{label:'MM Session #1',day:'Day 1 — May 7',time:'11:15am ET'},session2:{label:'MM Session #2',day:'Day 1 — May 7',time:'2:15pm ET'},session3:{label:'MM Session #3',day:'Day 2 — May 8',time:'11:15am ET'},session4:{label:'Q&A with Danny',day:'Day 2 — May 8',time:'2:30pm ET'}};
+function getRoomRows(){return COACHES.flatMap(c=>(c.sessions||'').split(',').map(s=>s.trim()).filter(Boolean).map(sk=>({coach:c,sessionKey:sk,sessionInfo:SESSION_LABELS[sk]||{label:sk,day:'',time:''}})));}
 function rRooms(f=''){
   const el=document.getElementById('room-list');
-  const rows=ROOMS.filter(r=>{
-    if(!f)return true;
-    const c=coach(r.coachId);
-    return c.name.toLowerCase().includes(f.toLowerCase())||r.sessionLabel.toLowerCase().includes(f.toLowerCase());
-  });
+  const rows=getRoomRows().filter(r=>!f||r.coach.name.toLowerCase().includes(f.toLowerCase())||r.sessionInfo.label.toLowerCase().includes(f.toLowerCase()));
   if(!rows.length){el.innerHTML='<div class="empty" style="grid-column:1/-1">No rooms found.</div>';return;}
-  el.innerHTML=rows.map((r,i)=>{
-    const c=coach(r.coachId);
-    return `<div class="rooms-coach-card" onclick="showRoomDet(${i})">
-      ${coachThumb(c,56,true)}
-      <div style="flex:1;min-width:0;">
-        <div class="rooms-coach-name">${c.name}</div>
-        <div class="rooms-coach-session">${r.sessionLabel}</div>
-      </div>
-      <div class="rooms-coach-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
-    </div>`;
-  }).join('');
+  el.innerHTML=rows.map((r,i)=>`<div class="rooms-coach-card" onclick="showRoomDet(${i})">${coachThumb(r.coach,56,true)}<div style="flex:1;min-width:0;"><div class="rooms-coach-name">${r.coach.name}</div><div class="rooms-coach-session">${r.sessionInfo.label} – ${r.sessionInfo.day} @ ${r.sessionInfo.time}</div></div><div class="rooms-coach-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div></div>`).join('');
 }
 function fRoom(v){rRooms(v);}
 function showRoomDet(i){
-  const r=ROOMS[i];const c=coach(r.coachId);
-  const validPhoto=c.photo&&!c.photo.startsWith('YOUR_');
-  document.getElementById('rd-photo-slot').innerHTML=validPhoto
-    ?`<img class="rd-photo" src="${c.photo}" alt="${c.name}">`
-    :`<div class="rd-av" style="background:${c.col};">${c.ini}</div>`;
+  const r=getRoomRows()[i];const c=r.coach;
+  const vp=c.photo_url&&c.photo_url.startsWith('http');
+  document.getElementById('rd-photo-slot').innerHTML=vp?`<img src="${c.photo_url}" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.25);flex-shrink:0;">`:`<div class="rd-av" style="background:${c.color||nCol(c.name)};">${ini(c.name)}</div>`;
   document.getElementById('rd-name').textContent=c.name+"'s Zoom Room";
-  document.getElementById('rd-role').textContent=c.role+' · '+r.sessionLabel;
-  const inRoom=ATTENDEES.filter(a=>a.rooms?.[r.sessionKey]?.toLowerCase().includes(c.name.split(' ')[0].toLowerCase()));
-  let b=`<div style="margin-bottom:20px;">${zbtn(c.zoom,'Join '+c.name+"'s Zoom Room")}</div>`;
+  document.getElementById('rd-role').textContent=c.role+' · '+r.sessionInfo.label;
+  const sk=r.sessionKey;const smap={session1:'s1',session2:'s2',session3:'s3',session4:'s4'};const sn=smap[sk]||'s1';
+  const inRoom=ATTENDEES.filter(a=>(a['room_'+sn]||'').toLowerCase().includes(c.name.split(' ')[0].toLowerCase()));
+  let b=`<div style="margin-bottom:20px;">${zbtn(c.zoom_url||'','Join '+c.name+"'s Zoom Room")}</div>`;
   b+=`<h4 style="font-size:12px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:12px;">Attendees in this room</h4>`;
-  b+=inRoom.length
-    ?inRoom.map(a=>`<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #eee;">${avDiv(nCol(a.name),ini(a.name),36,true)}<span style="font-size:14px;font-weight:500;">${a.name}</span></div>`).join('')
-    :`<p style="font-size:14px;color:#999;">Attendee list confirmed once registration closes.</p>`;
+  b+=inRoom.length?inRoom.map(a=>`<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #eee;">${avDiv(nCol(a.name),ini(a.name),36,true)}<span style="font-size:14px;font-weight:500;">${a.name}</span></div>`).join(''):`<p style="font-size:14px;color:#999;">Attendee list confirmed once registration closes.</p>`;
   document.getElementById('rd-body').innerHTML=b;
   document.getElementById('room-list').classList.add('hidden');
   document.getElementById('room-det').classList.add('active');
 }
 
-// ══════════════════════════════════════════════════════════
-//  FACILITATORS — rich cards with photo, email, zoom, about
-// ══════════════════════════════════════════════════════════
+// ── FACILITATORS ─────────────────────────────────────────────
 function rFacs(){
   document.getElementById('fac-grid').innerHTML=COACHES.map(c=>{
-    const validPhoto=c.photo&&!c.photo.startsWith('YOUR_');
-    const photoHtml=validPhoto
-      ?`<img src="${c.photo}" alt="${c.name}" style="width:100%;height:100%;object-fit:cover;object-position:top;">`
-      :`<div class="fac-card-photo-av" style="background:${c.col};">${c.ini}</div>`;
-    const validEmail=c.email&&!c.email.startsWith('YOUR_');
-    const validZoom=c.zoom&&!c.zoom.startsWith('YOUR_');
-    const validAbout=c.about&&!c.about.startsWith('YOUR_');
-    return `<div class="fac-card-new">
-      <div class="fac-card-photo-wrap">${photoHtml}</div>
-      <div class="fac-card-body">
-        <div class="fac-card-name">${c.name}</div>
-        <div class="fac-card-role">${c.role}</div>
-        <div class="fac-card-links">
-          ${validEmail?`<a class="fac-link" href="mailto:${c.email}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>${c.email}</a>`:''}
-          ${validZoom?`<a class="fac-link zoom" href="${c.zoom}" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="15" height="10" rx="2"/><path d="M17 9l5-2v10l-5-2V9z"/></svg>Join Zoom Room</a>`:''}
-          ${validAbout?`<a class="fac-link" href="${c.about}" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>About ${c.name.split(' ')[0]}</a>`:''}
-        </div>
-      </div>
-    </div>`;
+    const vp=c.photo_url&&c.photo_url.startsWith('http');const ve=c.email&&c.email.includes('@');const vz=c.zoom_url&&c.zoom_url.startsWith('http');const va=c.about_url&&c.about_url.startsWith('http');
+    return `<div class="fac-card-new"><div class="fac-card-photo-wrap">${vp?`<img src="${c.photo_url}" alt="${c.name}">`:`<div class="fac-card-av" style="background:${c.color||nCol(c.name)};">${ini(c.name)}</div>`}</div><div class="fac-card-body"><div class="fac-card-name">${c.name}</div><div class="fac-card-role">${c.role}</div><div class="fac-card-links">${ve?`<a class="fac-link" href="mailto:${c.email}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>${c.email}</a>`:''}${vz?`<a class="fac-link zoom" href="${c.zoom_url}" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="15" height="10" rx="2"/><path d="M17 9l5-2v10l-5-2V9z"/></svg>Join Zoom Room</a>`:''}${va?`<a class="fac-link" href="${c.about_url}" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>About ${c.name.split(' ')[0]}</a>`:''}${!ve&&!vz&&!va?`<span style="font-size:12px;color:#aaa;font-style:italic;">Details coming soon</span>`:''}</div></div></div>`;
   }).join('');
 }
 
-// ══════════════════════════════════════════════════════════
-//  MY SESSIONS — email gated
-// ══════════════════════════════════════════════════════════
-const DAY1_MM=[
-  {key:'session1',title:'Masterminding Session #1',time:'11:15am ET',day:'Day 1 — Thursday, May 7'},
-  {key:'session2',title:'Masterminding Session #2',time:'2:15pm ET', day:'Day 1 — Thursday, May 7'},
-];
-const DAY2_MM=[
-  {key:'session3',title:'Masterminding Session #3',       time:'11:15am ET',day:'Day 2 — Friday, May 8'},
-  {key:'session4',title:'Masterminding Q&A with Danny',   time:'2:30pm ET', day:'Day 2 — Friday, May 8'},
-];
-
+// ── MY SESSIONS ──────────────────────────────────────────────
 function msLookup(){
   const email=document.getElementById('ms-email-input').value.trim().toLowerCase();
-  const a=ATTENDEES.find(x=>x.email.toLowerCase()===email);
+  const a=ATTENDEES.find(x=>(x.email||'').toLowerCase()===email);
   const err=document.getElementById('ms-error');
   if(!a){err.style.display='block';return;}
-  err.style.display='none';
-  msShow(a);
+  err.style.display='none';msShow(a);
 }
 function msShow(a){
-  const col=nCol(a.name);
-  document.getElementById('ms-avatar').textContent=ini(a.name);
-  document.getElementById('ms-avatar').style.background=col;
-  document.getElementById('ms-pname').textContent=a.name;
-  document.getElementById('ms-pemail').textContent=a.email;
-  const allSessions=[...DAY1_MM,...DAY2_MM];
-  // group by day
-  const day1=DAY1_MM;const day2=DAY2_MM;
-  function dayCards(sessions){
-    return sessions.map(m=>{
-      const room=a.rooms?.[m.key]||'TBD';
-      const zoom=a.zoomLinks?.[m.key]||'';
-      const validZoom=zoom&&!zoom.startsWith('YOUR_');
-      return `<div class="ms-session-card">
-        <div class="ms-session-time">${m.time}</div>
-        <div class="ms-session-title">${m.title}</div>
-        <div class="ms-session-room">Room: <span>${room}</span></div>
-        ${validZoom
-          ?`<a class="ms-zoom-btn" href="${zoom}" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="15" height="10" rx="2"/><path d="M17 9l5-2v10l-5-2V9z"/></svg>Join Zoom</a>`
-          :`<div class="ms-zoom-pending">Zoom link coming soon</div>`}
-      </div>`;
-    }).join('');
-  }
-  document.getElementById('ms-session-content').innerHTML=`
-    <div class="ms-day-group">
-      <div class="ms-day-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Day 1 — Thursday, May 7</div>
-      ${dayCards(day1)}
-    </div>
-    <div class="ms-day-group">
-      <div class="ms-day-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Day 2 — Friday, May 8</div>
-      ${dayCards(day2)}
-    </div>`;
-  document.getElementById('ms-gate').style.display='none';
-  document.getElementById('ms-logged').style.display='block';
+  const col=nCol(a.name);const av=document.getElementById('ms-avatar');av.textContent=ini(a.name);av.style.background=col;
+  document.getElementById('ms-pname').textContent=a.name;document.getElementById('ms-pemail').textContent=a.email;
+  const d1=[{title:'Masterminding Session #1',time:'11:15am ET',room:a.room_s1,zoom:a.zoom_s1},{title:'Masterminding Session #2',time:'2:15pm ET',room:a.room_s2,zoom:a.zoom_s2}];
+  const d2=[{title:'Masterminding Session #3',time:'11:15am ET',room:a.room_s3,zoom:a.zoom_s3},{title:'Masterminding Q&A with Danny',time:'2:30pm ET',room:a.room_s4,zoom:a.zoom_s4}];
+  const cards=ss=>ss.map(m=>{const vz=m.zoom&&m.zoom.startsWith('http');return `<div class="ms-session-card"><div class="ms-session-time">${m.time}</div><div class="ms-session-title">${m.title}</div><div class="ms-session-room">Room: <span>${m.room||'TBD'}</span></div>${vz?`<a class="ms-zoom-btn" href="${m.zoom}" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="15" height="10" rx="2"/><path d="M17 9l5-2v10l-5-2V9z"/></svg>Join Zoom</a>`:`<div class="ms-zoom-pending">Zoom link coming soon</div>`}</div>`;}).join('');
+  const dayBadge=label=>`<div class="ms-day-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>${label}</div>`;
+  document.getElementById('ms-session-content').innerHTML=`<div class="ms-day-group">${dayBadge('Day 1 — Thursday, May 7')}${cards(d1)}</div><div class="ms-day-group">${dayBadge('Day 2 — Friday, May 8')}${cards(d2)}</div>`;
+  document.getElementById('ms-gate').style.display='none';document.getElementById('ms-logged').style.display='block';
 }
-function msSignout(){
-  document.getElementById('ms-email-input').value='';
-  document.getElementById('ms-error').style.display='none';
-  document.getElementById('ms-gate').style.display='block';
-  document.getElementById('ms-logged').style.display='none';
+function msSignout(){document.getElementById('ms-email-input').value='';document.getElementById('ms-error').style.display='none';document.getElementById('ms-gate').style.display='block';document.getElementById('ms-logged').style.display='none';}
+
+// ── ADMIN LOGIN ───────────────────────────────────────────────
+function adminLogin(){
+  const pw=document.getElementById('admin-pw-input').value;
+  const stored=SETTINGS.admin_password||'ACESadmin2026';
+  if(pw===stored){document.getElementById('admin-login-screen').style.display='none';document.getElementById('admin-panel').style.display='block';renderAdminSettings();renderScheduleAdmin();renderCoachesAdmin();renderAttendeesAdmin();}
+  else{document.getElementById('admin-login-error').style.display='block';}
+}
+function adminNav(section,btn){document.querySelectorAll('.admin-nav-item').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.admin-section').forEach(s=>s.classList.remove('active'));btn.classList.add('active');document.getElementById('admin-'+section).classList.add('active');}
+
+// ── ADMIN SETTINGS ────────────────────────────────────────────
+const SETTING_FIELDS=[{key:'event_dates',label:'Event Dates',placeholder:'May 7–8, 2026'},{key:'event_time',label:'Start Time',placeholder:'10:00am Eastern'},{key:'main_zoom',label:'Main Zoom URL',placeholder:'https://zoom.us/j/...'},{key:'registration_link',label:'Registration URL',placeholder:'https://...'},{key:'registration_qualifier',label:'Who this is for',placeholder:'Active ACES members...'},{key:'contact_email',label:'Contact Email',placeholder:'aces@learn.mirasee.com'}];
+function renderAdminSettings(){
+  document.getElementById('settings-form').innerHTML=`<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:20px;">${SETTING_FIELDS.map(f=>`<div class="form-field"><label>${f.label}</label><input id="sf-${f.key}" value="${(SETTINGS[f.key]||'').replace(/"/g,'&quot;')}" placeholder="${f.placeholder}" style="padding:8px 10px;border:1px solid var(--border);border-radius:7px;font-size:13px;background:#fff;outline:none;"></div>`).join('')}</div><button class="btn-add" onclick="saveSettings()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Save Settings</button>`;
+}
+async function saveSettings(){
+  setSaveStatus('saving');
+  const updates={};
+  SETTING_FIELDS.forEach(f=>{updates[f.key]=document.getElementById('sf-'+f.key).value.trim();SETTINGS[f.key]=updates[f.key];});
+  try{await api('PATCH','/settings',updates);setSaveStatus('saved');showToast('Settings saved!');applySettings();renderInfoSchedule();}
+  catch(e){setSaveStatus('error');showToast('Save failed','error');}
 }
 
-// ══════════════════════════════════════════════════════════
-//  MAGIC LINK — ?email=xxx auto-opens My Sessions
-// ══════════════════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded',()=>{
-  rSched(); rPersons(); rRooms(); rFacs();
+// ── ADMIN SCHEDULE ────────────────────────────────────────────
+function renderScheduleAdmin(){
+  document.getElementById('schedule-admin-tbody').innerHTML=SCHEDULE.map(s=>`<tr>
+    <td><span class="editable-cell" onclick="editCell(this,'schedule','date_label',${s.id})">${s.date_label||''}</span></td>
+    <td><span class="editable-cell" onclick="editCell(this,'schedule','title',${s.id})">${s.title||''}</span></td>
+    <td><span class="admin-tag tag-${s.type==='mm'?'blue':s.type==='main'?'green':'gray'}">${s.type||''}</span></td>
+    <td><span class="editable-cell" onclick="editCell(this,'schedule','zoom_url',${s.id})" style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;" title="${s.zoom_url||''}">${s.zoom_url?'✓ Set':'—'}</span></td>
+    <td><span class="editable-cell" onclick="editCell(this,'schedule','topic',${s.id})" style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;">${(s.topic||'').slice(0,50)}</span></td>
+    <td><button class="btn-danger" onclick="deleteRow('schedule',${s.id})">✕</button></td>
+  </tr>`).join('');
+}
+async function addScheduleItem(){
+  const item={date_label:document.getElementById('ns-date').value.trim(),title:document.getElementById('ns-title').value.trim(),sub_label:document.getElementById('ns-sub').value.trim(),type:document.getElementById('ns-type').value,topic:document.getElementById('ns-topic').value.trim(),zoom_url:document.getElementById('ns-zoom').value.trim(),sort_order:SCHEDULE.length+1};
+  if(!item.title){showToast('Title is required','error');return;}
+  try{setSaveStatus('saving');const row=await api('POST','/schedule',item);SCHEDULE.push(row);renderScheduleAdmin();renderInfoSchedule();rSched();setSaveStatus('saved');showToast('Session added!');['ns-date','ns-title','ns-sub','ns-topic','ns-zoom'].forEach(id=>document.getElementById(id).value='');}
+  catch(e){showToast('Failed to add','error');}
+}
+
+// ── ADMIN COACHES ─────────────────────────────────────────────
+function renderCoachesAdmin(){
+  document.getElementById('coaches-admin-tbody').innerHTML=COACHES.map(c=>`<tr>
+    <td><span class="editable-cell" onclick="editCell(this,'coaches','name',${c.id})">${c.name||''}</span></td>
+    <td><span class="editable-cell" onclick="editCell(this,'coaches','role',${c.id})">${c.role||''}</span></td>
+    <td><span class="editable-cell" onclick="editCell(this,'coaches','email',${c.id})">${c.email||''}</span></td>
+    <td><span class="editable-cell" onclick="editCell(this,'coaches','photo_url',${c.id})" title="${c.photo_url||''}">${c.photo_url?'✓ Set':'—'}</span></td>
+    <td><span class="editable-cell" onclick="editCell(this,'coaches','zoom_url',${c.id})" title="${c.zoom_url||''}">${c.zoom_url?'✓ Set':'—'}</span></td>
+    <td><span class="editable-cell" onclick="editCell(this,'coaches','about_url',${c.id})" title="${c.about_url||''}">${c.about_url?'✓ Set':'—'}</span></td>
+    <td><span class="editable-cell" onclick="editCell(this,'coaches','sessions',${c.id})">${c.sessions||''}</span></td>
+    <td><button class="btn-danger" onclick="deleteRow('coaches',${c.id})">✕</button></td>
+  </tr>`).join('');
+}
+async function addCoach(){
+  const item={name:document.getElementById('nc-name').value.trim(),role:document.getElementById('nc-role').value.trim(),email:document.getElementById('nc-email').value.trim(),photo_url:document.getElementById('nc-photo').value.trim(),zoom_url:document.getElementById('nc-zoom').value.trim(),about_url:document.getElementById('nc-about').value.trim(),sessions:document.getElementById('nc-sessions').value.trim(),color:nCol(document.getElementById('nc-name').value.trim()||'x')};
+  if(!item.name){showToast('Name is required','error');return;}
+  try{setSaveStatus('saving');const row=await api('POST','/coaches',item);COACHES.push(row);renderCoachesAdmin();rFacs();rRooms();setSaveStatus('saved');showToast('Coach added!');['nc-name','nc-role','nc-email','nc-photo','nc-zoom','nc-about','nc-sessions'].forEach(id=>document.getElementById(id).value='');}
+  catch(e){showToast('Failed to add','error');}
+}
+
+// ── ADMIN ATTENDEES ───────────────────────────────────────────
+function renderAttendeesAdmin(f=''){
+  const rows=(f?ATTENDEES.filter(a=>a.name.toLowerCase().includes(f.toLowerCase())||a.email.toLowerCase().includes(f.toLowerCase())):ATTENDEES).sort((a,b)=>a.name.localeCompare(b.name));
+  document.getElementById('attendee-count').textContent=`${ATTENDEES.length} total`;
+  document.getElementById('attendees-admin-tbody').innerHTML=rows.map(a=>`<tr>
+    <td><span class="editable-cell" onclick="editCell(this,'attendees','name',${a.id})">${a.name||''}</span></td>
+    <td><span class="editable-cell" onclick="editCell(this,'attendees','email',${a.id})">${a.email||''}</span></td>
+    <td><span class="editable-cell" onclick="editCell(this,'attendees','room_s1',${a.id})">${a.room_s1||'—'}</span></td>
+    <td><span class="editable-cell" onclick="editCell(this,'attendees','room_s2',${a.id})">${a.room_s2||'—'}</span></td>
+    <td><span class="editable-cell" onclick="editCell(this,'attendees','room_s3',${a.id})">${a.room_s3||'—'}</span></td>
+    <td><span class="editable-cell" onclick="editCell(this,'attendees','room_s4',${a.id})">${a.room_s4||'—'}</span></td>
+    <td><button class="btn-danger" onclick="deleteRow('attendees',${a.id})">✕</button></td>
+  </tr>`).join('');
+}
+async function addAttendee(){
+  const item={name:document.getElementById('na-name').value.trim(),email:document.getElementById('na-email').value.trim(),room_s1:document.getElementById('na-r1').value.trim(),zoom_s1:document.getElementById('na-z1').value.trim(),room_s2:document.getElementById('na-r2').value.trim(),zoom_s2:document.getElementById('na-z2').value.trim(),room_s3:document.getElementById('na-r3').value.trim(),zoom_s3:document.getElementById('na-z3').value.trim(),room_s4:document.getElementById('na-r4').value.trim(),zoom_s4:document.getElementById('na-z4').value.trim()};
+  if(!item.name||!item.email){showToast('Name and email required','error');return;}
+  try{setSaveStatus('saving');const row=await api('POST','/attendees',item);ATTENDEES.push(row);renderAttendeesAdmin();rPersons();setSaveStatus('saved');showToast('Attendee added!');['na-name','na-email','na-r1','na-z1','na-r2','na-z2','na-r3','na-z3','na-r4','na-z4'].forEach(id=>document.getElementById(id).value='');}
+  catch(e){showToast('Failed to add: '+(e.message||''),'error');}
+}
+
+// ── INLINE CELL EDITING ───────────────────────────────────────
+function editCell(span,table,field,id){
+  if(span.querySelector('input'))return;
+  const arr=table==='schedule'?SCHEDULE:table==='coaches'?COACHES:ATTENDEES;
+  const record=arr.find(r=>r.id===id);if(!record)return;
+  const original=record[field]||'';
+  const prev=span.innerHTML;
+  span.innerHTML=`<input class="cell-input" value="${original.replace(/"/g,'&quot;')}" style="min-width:120px;">`;
+  const input=span.querySelector('input');input.focus();input.select();
+  const save=async()=>{
+    const val=input.value.trim();record[field]=val;
+    span.innerHTML=val||'—';
+    setSaveStatus('saving');
+    try{
+      await api('PATCH',`/${table}/${id}`,{[field]:val});
+      setSaveStatus('saved');
+      if(table==='schedule'){renderInfoSchedule();rSched();}
+      if(table==='coaches'){rFacs();rRooms();}
+      if(table==='attendees')rPersons();
+    }catch(e){setSaveStatus('error');}
+  };
+  input.addEventListener('blur',save);
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')input.blur();if(e.key==='Escape'){span.innerHTML=prev;record[field]=original;}});
+}
+
+// ── DELETE ROW ────────────────────────────────────────────────
+async function deleteRow(table,id){
+  if(!confirm('Delete this row? This cannot be undone.'))return;
+  if(table==='schedule')SCHEDULE=SCHEDULE.filter(r=>r.id!==id);
+  else if(table==='coaches')COACHES=COACHES.filter(r=>r.id!==id);
+  else ATTENDEES=ATTENDEES.filter(r=>r.id!==id);
+  try{await api('DELETE',`/${table}/${id}`);setSaveStatus('saved');showToast('Deleted');}
+  catch(e){showToast('Deleted locally','error');}
+  if(table==='schedule'){renderScheduleAdmin();renderInfoSchedule();rSched();}
+  else if(table==='coaches'){renderCoachesAdmin();rFacs();rRooms();}
+  else{renderAttendeesAdmin();rPersons();}
+}
+
+// ── CHANGE PASSWORD ───────────────────────────────────────────
+async function changePassword(){
+  const p1=document.getElementById('new-pw-1').value,p2=document.getElementById('new-pw-2').value;
+  const msg=document.getElementById('pw-change-msg');
+  if(!p1){msg.style.display='block';msg.style.color='var(--red)';msg.textContent='Enter a new password.';return;}
+  if(p1!==p2){msg.style.display='block';msg.style.color='var(--red)';msg.textContent='Passwords do not match.';return;}
+  try{await api('PATCH','/settings',{admin_password:p1});SETTINGS.admin_password=p1;msg.style.display='block';msg.style.color='var(--green)';msg.textContent='Password updated!';document.getElementById('new-pw-1').value='';document.getElementById('new-pw-2').value='';}
+  catch(e){msg.style.display='block';msg.style.color='var(--red)';msg.textContent='Error saving.';}
+}
+
+// ── MAGIC LINK + ADMIN ROUTE ──────────────────────────────────
+document.addEventListener('DOMContentLoaded',async()=>{
+  await loadAll();
   const p=new URLSearchParams(window.location.search);
-  const em=p.get('email');
-  if(em){
-    openApp();
-    showTab('my');
-    const a=ATTENDEES.find(x=>x.email.toLowerCase()===em.toLowerCase());
-    if(a) setTimeout(()=>msShow(a),120);
-    else { document.getElementById('ms-email-input').value=em; }
+  const em=p.get('email'),isAdmin=p.get('admin')==='true';
+  if(isAdmin){openAdmin();}
+  else if(em){
+    openApp();showTab('my');
+    const a=ATTENDEES.find(x=>(x.email||'').toLowerCase()===em.toLowerCase());
+    if(a)setTimeout(()=>msShow(a),120);
+    else document.getElementById('ms-email-input').value=em;
   }
 });
 </script>

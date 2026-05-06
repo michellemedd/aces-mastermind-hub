@@ -2,4 +2,4 @@
 cmds = ["npm install"]
 
 [phases.start]
-cmd = "node server.js"
+cmd = "node api.js"
